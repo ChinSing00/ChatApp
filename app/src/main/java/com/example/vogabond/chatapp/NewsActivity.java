@@ -17,7 +17,7 @@ public class NewsActivity extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     public void getView() {
-        //view_pager = (ViewPager) findViewById(R.id.view_pager);
+        view_pager = (ViewPager) findViewById(R.id.view_pager);
         Radio_Group = (RadioGroup) findViewById(R.id.Radio_Group_Main);
         Radio_Group.setOnCheckedChangeListener(this);
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--导航栏字体颜色-->
+
     <item android:state_checked="true"
-        android:color="#2794f0"/>
+        android:drawable="@drawable/add_to_2"/>
     <item android:state_checked="false"
-        android:color="#8a8a8a"/>
+        android:drawable="@drawable/add_to_1"/>
 </selector>

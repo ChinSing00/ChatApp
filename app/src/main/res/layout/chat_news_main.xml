@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true">
+        <RadioButton
+            android:id="@+id/voice_chat_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/voice"
+            android:button="@null"
+            android:background="@null"
+            />
+        <EditText
+            android:id="@+id/edit_chat_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="42dp"
+            android:layout_toStartOf="@+id/expression_chat_view" />
+        <RadioButton
+            android:id="@+id/expression_chat_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/expression"
+            android:button="@null"
+            android:background="@null"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/add_to_chat_view"
+            android:layout_marginRight="10dp"/>
+        <RadioButton
+            android:id="@+id/add_to_chat_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/add_to"
+            android:button="@null"
+            android:background="@null"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#efeeee"
+        android:layout_above="@id/relat"/>
+
+</RelativeLayout>
