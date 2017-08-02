@@ -45,9 +45,17 @@
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
     <ImageView
+        android:id="@+id/chat"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#efeeee"
         android:layout_above="@id/relat"/>
+    <ListView
+        android:id="@+id/chat_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/chat">
+
+    </ListView>
 
 </RelativeLayout>
