@@ -7,9 +7,19 @@ android {
         applicationId "com.zpark.qin.chatapp"
         minSdkVersion 23
         targetSdkVersion 26
+        packagingOptions {
+            //exclude module: 'support-v4'
+            exclude 'META-INF/LICENSE'
+            exclude 'META-INF/NOTICE'
+        }
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //设置支持的SO库架构
+            abiFilters "armeabi-v7a", "x86","arm64-v8a","x86_64"
+        }
     }
     buildTypes {
         release {
@@ -17,12 +27,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    defaultConfig {
-        ndk {
-            //设置支持的SO库架构
-            abiFilters "armeabi-v7a", "x86","arm64-v8a","x86_64"
-        }
-    }
+
 }
 
 dependencies {
@@ -31,17 +36,18 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:design:25.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile fileTree(include: '*.jar', dir: 'libs')
     // 添加依赖。注意，版本号必须一致。
     // 基础功能 (必需)
-    compile 'com.netease.nimlib:basesdk:4.0.0'
+    //compile 'com.netease.nimlib:basesdk:4.0.0'
     // 音视频需要
     compile 'com.netease.nimlib:avchat:4.0.0'
     // 聊天室需要
     compile 'com.netease.nimlib:chatroom:4.0.0'
     // 实时会话服务需要
     compile 'com.netease.nimlib:rts:4.0.0'
-    compile 'com.android.support:design:26.0.0-alpha1'
+    compile project(':uikit')
 }
