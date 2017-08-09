@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.os.Environment;
 
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.activity.HomeActivity;
+import com.example.vogabond.chatapp.helper.activity.WelcomeActivity;
 import com.netease.nim.uikit.session.viewholder.MsgViewHolderThumbBase;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.SDKOptions;
@@ -26,12 +26,12 @@ public class MyApplication extends Application{
     }
 
     // 如果返回值为 null，则全部使用默认参数。
-    private SDKOptions options() {
+    protected SDKOptions options() {
         SDKOptions options = new SDKOptions();
 
         // 如果将新消息通知提醒托管给 SDK 完成，需要添加以下配置。否则无需设置。
         StatusBarNotificationConfig config = new StatusBarNotificationConfig();
-        config.notificationEntrance = HomeActivity.class; // 点击通知栏跳转到该Activity
+        config.notificationEntrance = WelcomeActivity.class; // 点击通知栏跳转到该Activity
         config.notificationSmallIconId = R.mipmap.ic_stat_notify_msg;
         // 呼吸灯配置
         config.ledARGB = Color.GREEN;
@@ -87,7 +87,7 @@ public class MyApplication extends Application{
     }
 
     // 如果已经存在用户登录信息，返回LoginInfo，否则返回null即可
-    private LoginInfo loginInfo() {
+    protected LoginInfo loginInfo() {
         return null;
     }
 
