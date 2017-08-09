@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.activity;
+package com.example.vogabond.chatapp.main.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
