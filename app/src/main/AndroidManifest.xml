@@ -36,16 +36,59 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-        tools:replace="android:icon, android:theme">
-        <activity android:name=".helper.activity.WelcomeActivity">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon, android:theme"
+        android:windowSoftInputMode="adjustPan">
+        <activity android:name=".helper.activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".helper.activity.HomeActivity" />
+        <activity android:name=".helper.activity.WelcomeActivity" />
+        <activity android:name=".helper.team.AdvancedTeamJoinActivity"/>
+        <activity android:name=".helper.team.AdvancedTeamSearchActivity"/>
+        <activity android:name=".helper.activity.LoginActivity"/>
+
+
+        <activity
+            android:name=".helper.activity.SettingsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+
+        <activity
+            android:name=".helper.activity.NoDisturbActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".helper.contact.AddFriendActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".helper.contact.UserProfileEditItemActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".helper.contact.UserProfileSettingActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+
 
         <meta-data
             android:name="com.netease.nim.appKey"
@@ -91,7 +134,7 @@
             android:name="com.netease.cosine.target.receiver"
             android:value="com.netease.nimlib.service.NimReceiver" />
 
-        <activity android:name=".helper.activity.LoginActivity"></activity>
+
     </application>
 
 </manifest>

@@ -3,6 +3,8 @@ package com.netease.nim.uikit;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.netease.nimlib.sdk.StatusBarNotificationConfig;
+
 /**
  * Created by hzxuwen on 2015/10/21.
  */
@@ -31,4 +33,6 @@ public class UserPreferences {
     static SharedPreferences getSharedPreferences() {
         return NimUIKit.getContext().getSharedPreferences("UIKit." + NimUIKit.getAccount(), Context.MODE_PRIVATE);
     }
+
+
 }
