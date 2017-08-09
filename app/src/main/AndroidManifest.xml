@@ -25,6 +25,7 @@
     <uses-permission android:name="com.netease.nim.demo.permission.RECEIVE_MSG"/>
 
     <application
+        android:name=".helper.MyApplication"
         tools:replace="android:icon, android:theme"
         android:allowBackup="true"
         android:icon="@drawable/icon"
