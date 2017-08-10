@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper;
+package com.example.vogabond.chatapp;
 
 import android.app.Application;
 import android.graphics.Bitmap;
