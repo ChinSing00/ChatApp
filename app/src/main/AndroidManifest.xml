@@ -39,6 +39,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 音视频 -->
+        <activity
+            android:name=".helper.avchat.activity.AVChatActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <!-- 关于 -->
+        <activity
+            android:name=".helper.avchat.activity.AVChatSettingsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <meta-data
             android:name="com.netease.nim.appKey"
             android:value="45a2d6c81bf080e5f7e90f74f2ad6c96" />

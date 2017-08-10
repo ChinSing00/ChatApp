@@ -74,13 +74,13 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
 
     // data
     private AVChatUI avChatUI; // 音视频总管理器
-    private AVChatData avChatData; // config for connect video server
-    private int state; // calltype 音频或视频
+    private AVChatData avChatData; // 连接视频服务器的配置
+    private int state; // 呼叫类型： 音频或视频
     private String receiverId; // 对方的account
 
     // state
     private boolean isUserFinish = false;
-    private boolean mIsInComingCall = false;// is incoming call or outgoing call
+    private boolean mIsInComingCall = false;// 来电还是外接电话
     private boolean isCallEstablished = false; // 电话是否接通
     private static boolean needFinish = true; // 若来电或去电未接通时，点击home。另外一方挂断通话。从最近任务列表恢复，则finish
     private boolean hasOnPause = false; // 是否暂停音视频
@@ -100,12 +100,11 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
     }
 
     /**
-     * incoming call
-     *
-     * @param context
+     * 来电
      */
     public static void launch(Context context, AVChatData config, int source) {
         needFinish = false;
+        //页面跳转
         Intent intent = new Intent();
         intent.setClass(context, AVChatActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -184,15 +183,13 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
 
     /**
      * 判断来电还是去电
-     *
-     * @return
      */
     private boolean checkSource() {
         switch (getIntent().getIntExtra(KEY_SOURCE, FROM_UNKNOWN)) {
-            case FROM_BROADCASTRECEIVER: // incoming call
+            case FROM_BROADCASTRECEIVER: // 来电
                 parseIncomingIntent();
                 return true;
-            case FROM_INTERNAL: // outgoing call
+            case FROM_INTERNAL: // 去电
                 parseOutgoingIntent();
                 if (state == AVChatType.VIDEO.getValue() || state == AVChatType.AUDIO.getValue()) {
                     return true;
@@ -221,8 +218,6 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
 
     /**
      * 注册监听
-     *
-     * @param register
      */
     private void registerNetCallObserver(boolean register) {
         AVChatManager.getInstance().observeAVChatState(this, register);
@@ -308,7 +303,7 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
 
             avChatUI.closeSessions(AVChatExitCode.HANGUP);
             cancelCallingNotifier();
-            // 如果是incoming call主叫方挂断，那么通知栏有通知
+            // 如果是来电主叫方挂断，那么通知栏有通知
             if (mIsInComingCall && !isCallEstablished) {
                 activeMissCallNotifier();
             }
@@ -383,8 +378,6 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
 
     /**
      * 处理连接服务器的返回值
-     *
-     * @param auth_result
      */
     protected void handleWithConnectServerResult(int auth_result) {
         LogUtil.i(TAG, "result code->" + auth_result);
@@ -405,8 +398,6 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
 
     /**
      * 处理音视频切换请求
-     *
-     * @param notification
      */
     private void handleCallControl(AVChatControlEvent notification) {
         switch (notification.getControlCommand()) {
@@ -480,7 +471,7 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
 
 
     /**
-     * ************************ AVChatStateObserver ****************************
+     * ************************ 音视频录制服务 ****************************
      */
 
     @Override
