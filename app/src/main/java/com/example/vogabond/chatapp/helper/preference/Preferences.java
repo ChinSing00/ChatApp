@@ -40,6 +40,6 @@ public class Preferences {
     }
 
     static SharedPreferences getSharedPreferences() {
-        return MyCache.getContext().getSharedPreferences("MyDemo", Context.MODE_PRIVATE);
-    }
+        return MyCache.getContext().getSharedPreferences("Demo", Context.MODE_PRIVATE);
+}
 }

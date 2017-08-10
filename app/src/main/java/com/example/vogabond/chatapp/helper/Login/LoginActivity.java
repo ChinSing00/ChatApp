@@ -164,6 +164,8 @@ public class LoginActivity extends UI implements View.OnClickListener{
                 });
             break;
             case R.id.register_login_tip:
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
                 break;
         }
     }
