@@ -22,8 +22,6 @@ import com.netease.nim.uikit.common.util.sys.NetworkUtil;
 public class RegisterActivity extends UI implements View.OnKeyListener,View.OnClickListener{
     private EditText edit_register_account,edit_register_password,edit_register_nickname;
     private Button button_register;
-    private boolean registerMode = false; // 注册模式
-    private boolean registerPanelInited = false; // 注册面板是否初始化
 
     @Override
     public boolean onKey(View view, int i, KeyEvent keyEvent) {
@@ -47,55 +45,56 @@ public class RegisterActivity extends UI implements View.OnKeyListener,View.OnCl
 
     @Override
     public void onClick(View view) {
-
-        if (!checkRegisterContentValid()) {
-            return;
-        }
-        if (!NetworkUtil.isNetAvailable(RegisterActivity.this)) {
-            Toast.makeText(RegisterActivity.this, R.string.network_is_not_available, Toast.LENGTH_SHORT).show();
-            return;
+        register();
         }
 
-        DialogMaker.showProgressDialog(this, getString(R.string.registering), false);
+        private void register(){
 
-        final String account = edit_register_account.getText().toString();
-        final String nickName = edit_register_nickname.getText().toString();
-        final String password = edit_register_password.getText().toString();
-
-        ContactHttpClient.getInstance().register(account, nickName, password, new ContactHttpClient.ContactHttpCallback<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(RegisterActivity.this, R.string.register_success, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-                startActivity(intent);
-                edit_register_account.setText(account);
-                edit_register_password.setText(password);
-
-                edit_register_account.setText("");
-                edit_register_nickname.setText("");
-                edit_register_password.setText("");
-
-                DialogMaker.dismissProgressDialog();
+            if (!checkRegisterContentValid()) {
+                return;
+            }
+            if (!NetworkUtil.isNetAvailable(RegisterActivity.this)) {
+                Toast.makeText(RegisterActivity.this, R.string.network_is_not_available, Toast.LENGTH_SHORT).show();
+                return;
             }
 
-            @Override
-            public void onFailed(int code, String errorMsg) {
-                Toast.makeText(RegisterActivity.this, getString(R.string.register_failed, String.valueOf(code), errorMsg), Toast.LENGTH_SHORT)
-                        .show();
+            DialogMaker.showProgressDialog(this, getString(R.string.registering), false);
 
-                DialogMaker.dismissProgressDialog();
-            }
-        });
+            final String account = edit_register_account.getText().toString();
+            final String nickName = edit_register_nickname.getText().toString();
+            final String password = edit_register_password.getText().toString();
 
+            ContactHttpClient.getInstance().register(account, nickName, password, new ContactHttpClient.ContactHttpCallback<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(RegisterActivity.this, R.string.register_success, Toast.LENGTH_SHORT).show();
+
+                    edit_register_account.setText(account);
+                    edit_register_password.setText(password);
+                    edit_register_account.setText("");
+                    edit_register_nickname.setText("");
+                    edit_register_password.setText("");
+
+                    DialogMaker.dismissProgressDialog();
+                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+                @Override
+                public void onFailed(int code, String errorMsg) {
+                    Toast.makeText(RegisterActivity.this, getString(R.string.register_failed, String.valueOf(code), errorMsg), Toast.LENGTH_SHORT)
+                            .show();
+
+                    DialogMaker.dismissProgressDialog();
+                }
+            });
         }
     private boolean checkRegisterContentValid() {
-        if (!registerMode || !registerPanelInited) {
-            return false;
-        }
 
         // 帐号检查
-        String account = edit_register_account.getText().toString().trim();
-        if (account.length() <= 0 || account.length() > 20) {
+        String account2 = edit_register_account.getText().toString().trim();
+        if (account2.length() <= 0 || account2.length() > 20) {
             Toast.makeText(this, R.string.register_account_tip, Toast.LENGTH_SHORT).show();
 
             return false;
@@ -110,8 +109,8 @@ public class RegisterActivity extends UI implements View.OnKeyListener,View.OnCl
         }
 
         // 密码检查
-        String password = edit_register_password.getText().toString().trim();
-        if (password.length() < 6 || password.length() > 20) {
+        String password2 = edit_register_password.getText().toString().trim();
+        if (password2.length() < 6 || password2.length() > 20) {
             Toast.makeText(this, R.string.register_password_tip, Toast.LENGTH_SHORT).show();
 
             return false;

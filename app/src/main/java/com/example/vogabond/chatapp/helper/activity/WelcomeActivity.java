@@ -12,6 +12,7 @@ import com.example.vogabond.chatapp.helper.Login.LoginActivity;
 import com.example.vogabond.chatapp.helper.MyCache;
 import com.example.vogabond.chatapp.helper.preference.Preferences;
 import com.example.vogabond.chatapp.helper.util.sys.SysInfoUtil;
+import com.example.vogabond.chatapp.main.activity.HomeActivity;
 import com.netease.nim.uikit.session.constant.Extras;
 import com.netease.nimlib.sdk.NimIntent;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
@@ -47,18 +48,20 @@ public class WelcomeActivity extends UI {
     protected void onResume() {
         super.onResume();
 
-        if (firstEnter) {
-            firstEnter = false;
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
                     customSplash = false;
-                    if (canAutoLogin()) {
-                        onIntent();
-                    } else {
+                    if (firstEnter) {
                         LoginActivity.start(WelcomeActivity.this);
                         finish();
+
+                    } else if (canAutoLogin()){
+
+                        onIntent();
+
                     }
+                    firstEnter = false;
                 }
             };
             if (customSplash) {
@@ -67,7 +70,6 @@ public class WelcomeActivity extends UI {
                 runnable.run();
             }
         }
-    }
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -133,7 +135,6 @@ public class WelcomeActivity extends UI {
      * 已经登陆过，自动登陆
      */
     private boolean canAutoLogin() {
-        SharedPreferences sp =getSharedPreferences("Demo", MODE_PRIVATE);
         String account = Preferences.getUserAccount();
         String token = Preferences.getUserToken();
         return !TextUtils.isEmpty(account) && !TextUtils.isEmpty(token);

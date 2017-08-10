@@ -16,10 +16,10 @@ import android.widget.Toast;
 
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.helper.MyCache;
-import com.example.vogabond.chatapp.helper.activity.HomeActivity;
 import com.example.vogabond.chatapp.helper.activity.UI;
 import com.example.vogabond.chatapp.helper.preference.Preferences;
 import com.example.vogabond.chatapp.helper.preference.UserPreferences;
+import com.example.vogabond.chatapp.main.activity.HomeActivity;
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.cache.DataCacheManager;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
@@ -112,62 +112,64 @@ public class LoginActivity extends UI implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button_login:
-                DialogMaker.showProgressDialog(this, null, getString(R.string.logining), true, new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        if (loginRequest != null) {
-                            loginRequest.abort();
-                            onLoginDone();
-                        }
-                    }
-                }).setCanceledOnTouchOutside(false);
-
-                // 云信只提供消息通道，并不包含用户资料逻辑。开发者需要在管理后台或通过服务器接口将用户帐号和token同步到云信服务器。
-                // 在这里直接使用同步到云信服务器的帐号和token登录。
-                // 这里为了简便起见，demo就直接使用了密码的md5作为token。
-                // 如果开发者直接使用这个demo，只更改appkey，然后就登入自己的账户体系的话，需要传入同步到云信服务器的token，而不是用户密码。
-                final String account = edit_login_account.getEditableText().toString().toLowerCase();
-                final String token = tokenFromPassword(edit_login_password.getEditableText().toString());
-                // 登录
-                loginRequest = NimUIKit.doLogin(new LoginInfo(account, token), new RequestCallback<LoginInfo>() {
-                    @Override
-                    public void onSuccess(LoginInfo param) {
-
-                        onLoginDone();
-
-                        MyCache.setAccount(account);
-                        saveLoginInfo(account, token);
-
-                        // 初始化消息提醒配置
-                        initNotificationConfig();
-
-                        // 进入主界面
-                        HomeActivity.start(LoginActivity.this, null);
-                        finish();
-                    }
-
-                    @Override
-                    public void onFailed(int code) {
-                        onLoginDone();
-                        if (code == 302 || code == 404) {
-                            Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(LoginActivity.this, "登录失败: " + code, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onException(Throwable exception) {
-                        Toast.makeText(LoginActivity.this, R.string.login_exception, Toast.LENGTH_LONG).show();
-                        onLoginDone();
-                    }
-                });
+                login();
             break;
             case R.id.register_login_tip:
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
+                finish();
                 break;
         }
+    }
+
+    private void login(){
+        DialogMaker.showProgressDialog(this, null, getString(R.string.logining), true, new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                if (loginRequest != null) {
+                    loginRequest.abort();
+                    onLoginDone();
+                }
+            }
+        }).setCanceledOnTouchOutside(false);
+
+        final String account = edit_login_account.getEditableText().toString().toLowerCase();
+        final String token = tokenFromPassword(edit_login_password.getEditableText().toString());
+        Log.e("TOKEN",token);
+        // 登录
+        loginRequest = NimUIKit.doLogin(new LoginInfo(account, token), new RequestCallback<LoginInfo>() {
+            @Override
+            public void onSuccess(LoginInfo param) {
+                onLoginDone();
+                Log.e("OnSuccess","" +
+                        "======================");
+                MyCache.setAccount(account);
+                saveLoginInfo(account, token);
+
+                // 初始化消息提醒配置
+                initNotificationConfig();
+
+                // 进入主界面
+                HomeActivity.start(LoginActivity.this, null);
+                finish();
+            }
+
+            @Override
+            public void onFailed(int code) {
+                onLoginDone();
+                if (code == 302 || code == 404) {
+                    Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "登录失败: " + code, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onException(Throwable exception) {
+                Toast.makeText(LoginActivity.this, R.string.login_exception, Toast.LENGTH_LONG).show();
+                onLoginDone();
+            }
+        });
     }
     private void initNotificationConfig() {
         // 初始化消息提醒
@@ -197,7 +199,8 @@ public class LoginActivity extends UI implements View.OnClickListener{
     //开发者需要根据自己的实际情况配置自身用户系统和 NIM 用户系统的关系
     private String tokenFromPassword(String password) {
         String appKey = readAppKey(this);
-        boolean isDemo = "45a2d6c81bf080e5f7e90f74f2ad6c96".equals(appKey)
+        Log.e("appKey",appKey);
+        boolean isDemo = "45c6af3c98409b18a84451215d0bdd6e".equals(appKey)
                 || "fe416640c8e8a72734219e1847ad2547".equals(appKey);
 
         return isDemo ? MD5.getStringMD5(password) : password;
@@ -237,7 +240,7 @@ public class LoginActivity extends UI implements View.OnClickListener{
         initNotificationConfig();
 
         // 构建缓存
-        DataCacheManager.buildDataCacheAsync();
+        //DataCacheManager.buildDataCacheAsync();
         NimUIKit.getImageLoaderKit().buildImageCache();
 
         // 进入主界面，此时可以查询数据（最近联系人列表、本地消息历史、群资料等都可以查询，但当云信服务器发起请求会返回408超时）
