@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.preference;
+package com.example.vogabond.chatapp.preference;
 
 public class DemoServers {
 

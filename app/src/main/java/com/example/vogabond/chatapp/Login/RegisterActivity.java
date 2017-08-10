@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.Login;
+package com.example.vogabond.chatapp.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,12 +6,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.vogabond.chatapp.ContactHttpClient;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.ContactHttpClient;
-import com.example.vogabond.chatapp.helper.activity.UI;
+import com.example.vogabond.chatapp.activity.UI;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
 import com.netease.nim.uikit.common.util.sys.NetworkUtil;
 

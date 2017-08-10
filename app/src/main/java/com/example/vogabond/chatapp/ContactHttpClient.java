@@ -1,11 +1,11 @@
-package com.example.vogabond.chatapp.helper;
+package com.example.vogabond.chatapp;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.example.vogabond.chatapp.helper.preference.DemoServers;
+import com.example.vogabond.chatapp.preference.DemoServers;
 import com.netease.nim.uikit.common.http.NimHttpClient;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nim.uikit.common.util.string.MD5;

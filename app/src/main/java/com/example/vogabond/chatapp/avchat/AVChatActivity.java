@@ -1,17 +1,9 @@
 package com.example.vogabond.chatapp.avchat;
 
-import android.app.Activity;
-
-import com.netease.nim.uikit.common.activity.UI;
-
 /**
- * Created by Selet on 2017/8/8 0008.
+ * Created by Vogabond on 2017/8/8.
  */
 
-public class AVChatActivity extends UI{
-    public static String FROM_INTERNAL;
-
-    public static void launch(Activity activity, String account, int value, String fromInternal) {
-
-    }
+public class AVChatActivity {
+    public static final String INTENT_ACTION_AVCHAT = "INTENT_ACTION_AVCHAT";
 }

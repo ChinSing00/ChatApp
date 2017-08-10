@@ -1,18 +1,17 @@
-package com.example.vogabond.chatapp.helper.activity;
+package com.example.vogabond.chatapp.main.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import com.example.vogabond.chatapp.Login.LoginActivity;
+import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.Login.LoginActivity;
-import com.example.vogabond.chatapp.helper.MyCache;
-import com.example.vogabond.chatapp.helper.preference.Preferences;
-import com.example.vogabond.chatapp.helper.util.sys.SysInfoUtil;
-import com.example.vogabond.chatapp.main.activity.HomeActivity;
+import com.example.vogabond.chatapp.avchat.AVChatActivity;
+import com.example.vogabond.chatapp.activity.UI;
+import com.example.vogabond.chatapp.preference.Preferences;
+import com.example.vogabond.chatapp.util.sys.SysInfoUtil;
 import com.netease.nim.uikit.session.constant.Extras;
 import com.netease.nimlib.sdk.NimIntent;
 import com.netease.nimlib.sdk.msg.model.IMMessage;

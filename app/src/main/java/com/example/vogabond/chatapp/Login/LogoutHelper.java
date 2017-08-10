@@ -1,6 +1,6 @@
-package com.example.vogabond.chatapp.helper.Login;
+package com.example.vogabond.chatapp.Login;
 
-import com.example.vogabond.chatapp.helper.MyCache;
+import com.example.vogabond.chatapp.MyCache;
 import com.netease.nim.uikit.LoginSyncDataStatusObserver;
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.common.ui.drop.DropManager;

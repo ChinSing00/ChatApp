@@ -9,7 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.widget.RadioGroup;
 
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.Login.LoginActivity;
 
 /**
  * Created by Selet on 2017/8/4 0004.

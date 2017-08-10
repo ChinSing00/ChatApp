@@ -1,9 +1,9 @@
-package com.example.vogabond.chatapp.helper.preference;
+package com.example.vogabond.chatapp.preference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.vogabond.chatapp.helper.MyCache;
+import com.example.vogabond.chatapp.MyCache;
 
 /**
  * Created by Vogabond on 2017/8/8.

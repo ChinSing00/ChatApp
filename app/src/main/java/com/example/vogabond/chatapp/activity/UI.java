@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.activity;
+package com.example.vogabond.chatapp.activity;
 
 import android.annotation.TargetApi;
 import android.content.Context;

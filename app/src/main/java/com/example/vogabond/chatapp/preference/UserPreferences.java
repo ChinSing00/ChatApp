@@ -1,11 +1,11 @@
-package com.example.vogabond.chatapp.helper.preference;
+package com.example.vogabond.chatapp.preference;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.vogabond.chatapp.helper.MyCache;
+import com.example.vogabond.chatapp.MyCache;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;
 
 /**

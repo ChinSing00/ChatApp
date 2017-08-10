@@ -5,8 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Environment;
 
-import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.activity.WelcomeActivity;
+import com.example.vogabond.chatapp.main.activity.WelcomeActivity;
 import com.netease.nim.uikit.session.viewholder.MsgViewHolderThumbBase;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.SDKOptions;

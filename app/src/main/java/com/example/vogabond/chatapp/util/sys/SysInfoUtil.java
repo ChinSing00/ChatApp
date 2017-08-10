@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.util.sys;
+package com.example.vogabond.chatapp.util.sys;
 
 import android.app.ActivityManager;
 import android.content.Context;
