@@ -25,6 +25,7 @@
     <uses-permission android:name="com.netease.nim.demo.permission.RECEIVE_MSG"/>
 
     <application
+        android:name=".MyApplication"
         tools:replace="android:icon, android:theme"
         android:allowBackup="true"
         android:icon="@drawable/icon"
@@ -32,7 +33,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".helper.activity.HomeActivity">
+        <activity android:name=".main.activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,9 +41,10 @@
             </intent-filter>
         </activity>
 
+
         <!-- 音视频 -->
         <activity
-            android:name=".helper.avchat.activity.AVChatActivity"
+            android:name="avchat.activity.AVChatActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme"
@@ -58,7 +60,7 @@
 
         <meta-data
             android:name="com.netease.nim.appKey"
-            android:value="45a2d6c81bf080e5f7e90f74f2ad6c96" />
+            android:value="45c6af3c98409b18a84451215d0bdd6e" />
         <service
             android:name="com.netease.nimlib.service.NimService"
             android:process=":core"/>

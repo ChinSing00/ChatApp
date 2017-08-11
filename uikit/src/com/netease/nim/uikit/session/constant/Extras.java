@@ -4,6 +4,7 @@ package com.netease.nim.uikit.session.constant;
  * Created by zhoujianghua on 2015/8/11.
  */
 public interface Extras {
+    String EXTRA_JUMP_P2P = "EXTRA_JUMP_P2P";
 
     String EXTRA_FILE_PATH = "file_path";
 
@@ -44,4 +45,5 @@ public interface Extras {
     String EXTRA_SCALED_IMAGE_LIST = "scaled_image_list";
     String EXTRA_ORIG_IMAGE_LIST = "orig_image_list";
     String EXTRA_NEED_SHOW_SEND_ORIGINAL = "need_show_send_original_image";
+
 }
