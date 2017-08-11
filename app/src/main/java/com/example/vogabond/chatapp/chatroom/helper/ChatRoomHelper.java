@@ -5,7 +5,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.chatroom.DemoCache;
 
 import java.util.HashMap;
 import java.util.Map;
