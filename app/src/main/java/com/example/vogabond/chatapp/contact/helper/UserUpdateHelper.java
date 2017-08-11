@@ -2,8 +2,8 @@ package com.example.vogabond.chatapp.contact.helper;
 
 import android.widget.Toast;
 
-import com.netease.nim.demo.DemoCache;
-import com.netease.nim.demo.R;
+import com.example.vogabond.chatapp.MyCache;
+import com.example.vogabond.chatapp.R;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallbackWrapper;
@@ -38,7 +38,7 @@ public class UserUpdateHelper {
                     LogUtil.i(TAG, "update userInfo success, update fields count=" + fields.size());
                 } else {
                     if (exception != null) {
-                        Toast.makeText(DemoCache.getContext(), R.string.user_info_update_failed, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MyCache.getContext(), R.string.user_info_update_failed, Toast.LENGTH_SHORT).show();
                         LogUtil.i(TAG, "update userInfo failed, exception=" + exception.getMessage());
                     }
                 }

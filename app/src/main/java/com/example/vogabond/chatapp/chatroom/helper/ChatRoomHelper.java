@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
 
 import java.util.HashMap;
@@ -42,7 +43,7 @@ public class ChatRoomHelper {
     }
 
     private static void blurCoverImage(boolean blur,final ImageView imageView,final int resId) {
-        final Context context = DemoCache.getContext();
+        final Context context = MyCache.getContext();
         if (!blur){
             Glide.with(context).load(resId).into(imageView);
         }else {

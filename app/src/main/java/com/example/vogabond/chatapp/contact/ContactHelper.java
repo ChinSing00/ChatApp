@@ -2,6 +2,7 @@ package com.example.vogabond.chatapp.contact;
 
 import android.content.Context;
 
+import com.example.vogabond.chatapp.contact.activity.UserProfileActivity;
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.contact.ContactEventListener;
 

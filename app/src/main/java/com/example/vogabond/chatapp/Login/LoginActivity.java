@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.activity.UI;
-import com.example.vogabond.chatapp.main.activity.HomeActivity;
+import com.example.vogabond.chatapp.main.activity.MainActivity;
 import com.example.vogabond.chatapp.preference.Preferences;
 import com.example.vogabond.chatapp.preference.UserPreferences;
 import com.netease.nim.uikit.NimUIKit;
@@ -149,7 +149,7 @@ public class LoginActivity extends UI implements View.OnClickListener{
                 initNotificationConfig();
 
                 // 进入主界面
-                HomeActivity.start(LoginActivity.this, null);
+                MainActivity.start(LoginActivity.this, null);
                 finish();
             }
 
@@ -243,7 +243,7 @@ public class LoginActivity extends UI implements View.OnClickListener{
         NimUIKit.getImageLoaderKit().buildImageCache();
 
         // 进入主界面，此时可以查询数据（最近联系人列表、本地消息历史、群资料等都可以查询，但当云信服务器发起请求会返回408超时）
-        HomeActivity.start(LoginActivity.this, null);
+        MainActivity.start(LoginActivity.this, null);
 
         // 演示15s后手动登录，登录成功后，可以正常收发数据
         getHandler().postDelayed(new Runnable() {

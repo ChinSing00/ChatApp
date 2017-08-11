@@ -7,8 +7,8 @@ import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
+import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.DemoCache;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 
 /**
@@ -52,7 +52,7 @@ public class AVChatSoundPlayer {
     }
 
     public AVChatSoundPlayer() {
-        this.context = DemoCache.getContext();
+        this.context = MyCache.getContext();
     }
 
     public synchronized void play(RingerTypeEnum type) {

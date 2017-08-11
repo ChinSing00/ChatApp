@@ -3,6 +3,7 @@ package com.example.vogabond.chatapp.session.action;
 import android.widget.Toast;
 
 import com.example.vogabond.chatapp.R;
+import com.example.vogabond.chatapp.avchat.activity.AVChatActivity;
 import com.netease.nim.uikit.common.util.sys.NetworkUtil;
 import com.netease.nim.uikit.session.actions.BaseAction;
 import com.netease.nimlib.sdk.avchat.constant.AVChatType;

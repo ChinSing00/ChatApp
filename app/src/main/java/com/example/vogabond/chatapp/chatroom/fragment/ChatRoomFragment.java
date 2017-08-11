@@ -14,14 +14,15 @@ import com.example.vogabond.chatapp.chatroom.activity.ChatRoomActivity;
 import com.example.vogabond.chatapp.chatroom.adapter.ChatRoomTabPagerAdapter;
 import com.example.vogabond.chatapp.chatroom.fragment.tab.ChatRoomTabFragment;
 import com.example.vogabond.chatapp.chatroom.helper.ChatRoomHelper;
+import com.example.vogabond.chatapp.common.infra.Handlers;
+import com.example.vogabond.chatapp.common.ui.viewpager.FadeInOutPageTransformer;
+import com.example.vogabond.chatapp.common.ui.viewpager.PagerSlidingTabStrip;
 import com.netease.nim.uikit.common.ui.barrage.BarrageConfig;
 import com.netease.nim.uikit.common.ui.barrage.BarrageSurfaceView;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.chatroom.ChatRoomService;
 
-import commoon.ui.viewpager.infra.Handlers;
-import commoon.ui.viewpager.ui.viewpager.FadeInOutPageTransformer;
-import commoon.ui.viewpager.ui.viewpager.PagerSlidingTabStrip;
+
 
 /**
  * 聊天室顶层fragment
@@ -100,7 +101,7 @@ public class ChatRoomFragment extends ChatRoomTabFragment implements ViewPager.O
 
             final String barrageText1 = "欢迎进入直播间";
             final String barrageText2 = "Welcome to live room";
-            Handlers.shaerdHandle(getActivity()).postDelayed(new Runnable(){
+            Handlers.sharedHandler(getActivity()).postDelayed(new Runnable(){
                 @Override
                 public void run() {
                     BarrageConfig config = new BarrageConfig();

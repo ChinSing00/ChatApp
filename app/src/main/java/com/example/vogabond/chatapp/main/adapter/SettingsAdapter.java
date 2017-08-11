@@ -10,10 +10,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.bean.SettingTemplate;
-import com.example.vogabond.chatapp.helper.bean.SettingType;
+import com.example.vogabond.chatapp.main.bean.SettingTemplate;
+import com.example.vogabond.chatapp.main.bean.SettingType;
 import com.netease.nim.uikit.common.ui.imageview.HeadImageView;
 import com.netease.nim.uikit.common.ui.widget.SwitchButton;
 

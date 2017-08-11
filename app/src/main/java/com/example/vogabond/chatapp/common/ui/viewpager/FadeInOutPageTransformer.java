@@ -1,4 +1,4 @@
-package commoon.ui.viewpager.ui.viewpager;
+package com.example.vogabond.chatapp.common.ui.viewpager;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;

@@ -9,6 +9,7 @@ import com.example.vogabond.chatapp.Login.LoginActivity;
 import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.activity.UI;
+import com.example.vogabond.chatapp.avchat.activity.AVChatActivity;
 import com.example.vogabond.chatapp.preference.Preferences;
 import com.example.vogabond.chatapp.util.sys.SysInfoUtil;
 import com.netease.nim.uikit.session.constant.Extras;
@@ -164,7 +165,7 @@ public class WelcomeActivity extends UI {
     }
 
     private void showMainActivity(Intent intent) {
-        HomeActivity.start(WelcomeActivity.this, intent);
+        MainActivity.start(WelcomeActivity.this, intent);
         finish();
     }
 

@@ -8,15 +8,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
+import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.MyCache;
-import com.example.vogabond.chatapp.helper.activity.HomeActivity;import com.example.vogabond.chatapp.helper.activity.NoDisturbActivity;import com.example.vogabond.chatapp.helper.adapter.SettingsAdapter;
-import com.example.vogabond.chatapp.helper.bean.SettingTemplate;
-import com.example.vogabond.chatapp.helper.bean.SettingType;
-import com.example.vogabond.chatapp.helper.config.preference.Preferences;
-import com.example.vogabond.chatapp.helper.config.preference.UserPreferences;
-import com.example.vogabond.chatapp.helper.contact.UserProfileSettingActivity;
+import com.example.vogabond.chatapp.contact.activity.UserProfileSettingActivity;
+import com.example.vogabond.chatapp.main.adapter.SettingsAdapter;
+import com.example.vogabond.chatapp.main.bean.SettingTemplate;
+import com.example.vogabond.chatapp.main.bean.SettingType;
+import com.example.vogabond.chatapp.preference.Preferences;
+import com.example.vogabond.chatapp.preference.UserPreferences;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.model.ToolBarOptions;
 import com.netease.nimlib.sdk.NIMClient;
@@ -176,12 +175,12 @@ public class SettingsActivity extends UI   {
 
         items.add(SettingTemplate.makeSeperator());
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//            items.add(new SettingTemplate(TAG_NRTC_SETTINGS, getString(R.string.nrtc_settings)));
-//            items.add(SettingTemplate.addLine());
-//            items.add(new SettingTemplate(TAG_NRTC_NET_DETECT, "音视频通话网络探测"));
-//            items.add(SettingTemplate.makeSeperator());
-//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            items.add(new SettingTemplate(TAG_NRTC_SETTINGS, getString(R.string.nrtc_settings)));
+            items.add(SettingTemplate.addLine());
+            items.add(new SettingTemplate(TAG_NRTC_NET_DETECT, "音视频通话网络探测"));
+            items.add(SettingTemplate.makeSeperator());
+        }
 
         items.add(new SettingTemplate(TAG_MSG_IGNORE, "过滤通知",
                 SettingType.TYPE_TOGGLE, UserPreferences.getMsgIgnore()));
@@ -212,10 +211,10 @@ public class SettingsActivity extends UI   {
                 UserProfileSettingActivity.start(this, MyCache.getAccount());
                 break;
             case TAG_NO_DISTURBE:
-                startNoDisturb();
+               // startNoDisturb();
                 break;
             case TAG_CUSTOM_NOTIFY:
-//                CustomNotificationActivity.start(SettingsActivity.this);
+                //CustomNotificationActivity.start(SettingsActivity.this);
                 break;
             case TAG_ABOUT:
 //                startActivity(new Intent(SettingsActivity.this, AboutActivity.class));
@@ -265,7 +264,7 @@ public class SettingsActivity extends UI   {
      */
     private void logout() {
         removeLoginState();
-        HomeActivity.logout(SettingsActivity.this, false);
+        //MainActivity.logout(SettingsActivity.this, false);
 
         finish();
         NIMClient.getService(AuthService.class).logout();
@@ -382,9 +381,9 @@ public class SettingsActivity extends UI   {
 //        UserPreferences.setNotificationToggle(on);
 //    }
 
-    private void startNoDisturb() {
-        NoDisturbActivity.startActivityForResult(this, UserPreferences.getStatusConfig(), noDisturbTime, NoDisturbActivity.NO_DISTURB_REQ);
-    }
+//    private void startNoDisturb() {
+//        NoDisturbActivity.startActivityForResult(this, UserPreferences.getStatusConfig(), noDisturbTime, NoDisturbActivity.NO_DISTURB_REQ);
+//    }
 //
     private String getIndexCacheSize() {
         long size = NIMClient.getService(LuceneService.class).getCacheSize();

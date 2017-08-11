@@ -15,9 +15,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.contact.constant.UserConstant;
-import com.netease.nim.demo.contact.helper.UserUpdateHelper;
+import com.example.vogabond.chatapp.R;
+import com.example.vogabond.chatapp.contact.constant.UserConstant;
+import com.example.vogabond.chatapp.contact.helper.UserUpdateHelper;
 import com.netease.nim.uikit.cache.FriendDataCache;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
@@ -251,9 +251,9 @@ public class UserProfileEditItemActivity extends UI implements View.OnClickListe
     }
 
     private void genderCheck(int selected) {
-        otherCheck.setBackgroundResource(selected == GenderEnum.UNKNOWN.getValue() ? R.drawable.nim_contact_checkbox_checked_green : R.drawable.nim_checkbox_not_checked);
-        maleCheck.setBackgroundResource(selected == GenderEnum.MALE.getValue() ? R.drawable.nim_contact_checkbox_checked_green : R.drawable.nim_checkbox_not_checked);
-        femaleCheck.setBackgroundResource(selected == GenderEnum.FEMALE.getValue() ? R.drawable.nim_contact_checkbox_checked_green : R.drawable.nim_checkbox_not_checked);
+        otherCheck.setBackgroundResource(selected == GenderEnum.UNKNOWN.getValue() ? R.drawable.nim_contact_checkbox_checked_green : R.mipmap.nim_checkbox_not_checked);
+        maleCheck.setBackgroundResource(selected == GenderEnum.MALE.getValue() ? R.drawable.nim_contact_checkbox_checked_green : R.mipmap.nim_checkbox_not_checked);
+        femaleCheck.setBackgroundResource(selected == GenderEnum.FEMALE.getValue() ? R.drawable.nim_contact_checkbox_checked_green : R.mipmap.nim_checkbox_not_checked);
     }
 
     private void openTimePicker() {

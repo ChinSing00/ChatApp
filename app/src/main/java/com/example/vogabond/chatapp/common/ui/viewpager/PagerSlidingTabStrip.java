@@ -1,4 +1,4 @@
-package commoon.ui.viewpager.ui.viewpager;
+package com.example.vogabond.chatapp.common.ui.viewpager;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.widget.HorizontalScrollView;
 
 import com.example.vogabond.chatapp.chatroom.adapter.ChatRoomTabPagerAdapter;
-import com.example.vogabond.chatapp.chatroom.fragment.ChatRoomFragment;
 
 /**
  * Created by yang。先森 on 2017/8/9 0009.
