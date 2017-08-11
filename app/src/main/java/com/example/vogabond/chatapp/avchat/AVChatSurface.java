@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.avchat;
+package com.example.vogabond.chatapp.avchat;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.helper.DemoCache;
-import com.example.vogabond.chatapp.helper.avchat.constant.CallStateEnum;
 import com.netease.nim.uikit.common.util.sys.ScreenUtil;
 import com.netease.nimlib.sdk.avchat.AVChatManager;
 import com.netease.nimlib.sdk.avchat.constant.AVChatVideoScalingType;

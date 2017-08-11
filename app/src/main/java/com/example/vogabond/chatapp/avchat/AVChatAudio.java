@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.avchat;
+package com.example.vogabond.chatapp.avchat;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -8,12 +8,12 @@ import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.helper.DemoCache;
-import com.example.vogabond.chatapp.helper.avchat.constant.CallStateEnum;
-import com.example.vogabond.chatapp.helper.avchat.widgets.ToggleListener;
-import com.example.vogabond.chatapp.helper.avchat.widgets.ToggleState;
-import com.example.vogabond.chatapp.helper.avchat.widgets.ToggleView;
+import com.example.vogabond.chatapp.avchat.widgets.ToggleListener;
+import com.example.vogabond.chatapp.avchat.widgets.ToggleState;
+import com.example.vogabond.chatapp.avchat.widgets.ToggleView;
 import com.netease.nim.uikit.cache.NimUserInfoCache;
 import com.netease.nim.uikit.common.ui.imageview.HeadImageView;
 import com.netease.nim.uikit.common.util.sys.NetworkUtil;
@@ -24,7 +24,7 @@ import com.netease.nim.uikit.common.util.sys.NetworkUtil;
 //音频管理器， 音频界面初始化和管理
 public class AVChatAudio implements View.OnClickListener,ToggleListener{
     // constant
-    private static final int[] NETWORK_GRADE_DRAWABLE = new int[]{R.drawable.network_grade_0,R.drawable.network_grade_1,R.drawable.network_grade_2,R.drawable.network_grade_3};
+    private static final int[] NETWORK_GRADE_DRAWABLE = new int[]{R.mipmap.network_grade_0,R.mipmap.network_grade_1,R.mipmap.network_grade_2,R.mipmap.network_grade_3};
     private static final int[] NETWORK_GRADE_LABEL = new int[]{R.string.avchat_network_grade_0,R.string.avchat_network_grade_1,R.string.avchat_network_grade_2,R.string.avchat_network_grade_3};
 
     private Context context;
@@ -231,7 +231,7 @@ public class AVChatAudio implements View.OnClickListener,ToggleListener{
     public void showNetworkCondition(int grade){
         if(grade >= 0 && grade < NETWORK_GRADE_DRAWABLE.length){
             netUnstableTV.setText(NETWORK_GRADE_LABEL[grade]);
-            Drawable drawable = DemoCache.getContext().getResources().getDrawable(NETWORK_GRADE_DRAWABLE[grade]);
+            Drawable drawable = MyCache.getContext().getResources().getDrawable(NETWORK_GRADE_DRAWABLE[grade]);
             if(drawable != null){
                 drawable.setBounds(0,0,drawable.getIntrinsicWidth(),drawable.getIntrinsicHeight());
                 netUnstableTV.setCompoundDrawables(null,null,drawable,null);
@@ -261,7 +261,7 @@ public class AVChatAudio implements View.OnClickListener,ToggleListener{
      * @param show
      */
     private void setWifiUnavailableNotifyTV(boolean show){
-        if(show && !NetworkUtil.isWifi(DemoCache.getContext())){
+        if(show && !NetworkUtil.isWifi(MyCache.getContext())){
             wifiUnavailableNotifyTV.setVisibility(View.VISIBLE);
         }else {
             wifiUnavailableNotifyTV.setVisibility(View.GONE);

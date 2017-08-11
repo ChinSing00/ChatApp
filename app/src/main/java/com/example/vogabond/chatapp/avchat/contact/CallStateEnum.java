@@ -1,9 +1,9 @@
-package com.example.vogabond.chatapp.helper.avchat.constant;
+package com.example.vogabond.chatapp.avchat.contact;
 
 /**
- * Created by MSI on 2017/8/8.
+ * Created by Selet on 2017/8/11 0011.
  */
-//呼叫状态，用来控制刷新界面
+
 public enum CallStateEnum {
     INVALID(-1), //无效的状态,该状态下无界面显示
 

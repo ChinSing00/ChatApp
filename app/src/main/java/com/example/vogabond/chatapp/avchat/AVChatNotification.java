@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.avchat;
+package com.example.vogabond.chatapp.avchat;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -8,8 +8,7 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.avchat.activity.AVChatActivity;
-import com.example.vogabond.chatapp.helper.main.model.Extras;
+import com.example.vogabond.chatapp.main.activity.WelcomeActivity;
 import com.netease.nim.uikit.cache.NimUserInfoCache;
 import com.netease.nim.uikit.session.activity.P2PMessageActivity;
 
@@ -47,7 +46,7 @@ public class AVChatNotification {
             localIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
             String tickerText = String.format(context.getString(R.string.avchat_notification), displayName);
-            int iconId = R.drawable.ic_stat_notify_msg;
+            int iconId = R.mipmap.ic_stat_notify_msg;
 
             PendingIntent pendingIntent = PendingIntent.getActivity(context, CALLING_NOTIFY_ID, localIntent, PendingIntent
                     .FLAG_UPDATE_CURRENT);

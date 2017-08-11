@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.avchat.receiver;
+package com.example.vogabond.chatapp.avchat.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

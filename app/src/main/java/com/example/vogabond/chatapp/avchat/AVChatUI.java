@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.avchat;
+package com.example.vogabond.chatapp.avchat;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,9 +13,8 @@ import android.widget.Toast;
 
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.helper.DemoCache;
-import com.example.vogabond.chatapp.helper.avchat.activity.AVChatExitCode;
-import com.example.vogabond.chatapp.helper.avchat.constant.CallStateEnum;
-import com.example.vogabond.chatapp.helper.avchat.widgets.MultiSelectDialog;
+import com.example.vogabond.chatapp.avchat.activity.AVChatExitCode;
+import com.example.vogabond.chatapp.avchat.widgets.MultiSelectDialog;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nim.uikit.permission.BaseMPermission;

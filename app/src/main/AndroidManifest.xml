@@ -52,7 +52,7 @@
 
         <!-- 关于 -->
         <activity
-            android:name=".helper.avchat.activity.AVChatSettingsActivity"
+            android:name=".avchat.activity.AVChatSettingsActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"

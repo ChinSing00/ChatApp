@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.avchat.widgets;
+package com.example.vogabond.chatapp.avchat.widgets;
 
 import android.util.Pair;
 import android.widget.ImageView;

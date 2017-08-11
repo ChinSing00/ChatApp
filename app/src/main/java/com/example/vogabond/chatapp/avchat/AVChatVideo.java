@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.avchat;
+package com.example.vogabond.chatapp.avchat;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -9,10 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.avchat.constant.CallStateEnum;
-import com.example.vogabond.chatapp.helper.avchat.widgets.ToggleListener;
-import com.example.vogabond.chatapp.helper.avchat.widgets.ToggleState;
-import com.example.vogabond.chatapp.helper.avchat.widgets.ToggleView;
+import com.example.vogabond.chatapp.avchat.widgets.ToggleListener;
+import com.example.vogabond.chatapp.avchat.widgets.ToggleState;
+import com.example.vogabond.chatapp.avchat.widgets.ToggleView;
 import com.netease.nim.uikit.cache.NimUserInfoCache;
 import com.netease.nim.uikit.common.ui.imageview.HeadImageView;
 import com.netease.nimlib.sdk.avchat.model.AVChatCameraCapturer;

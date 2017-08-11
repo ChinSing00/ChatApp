@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import com.example.vogabond.chatapp.Login.LoginActivity;
 import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.avchat.AVChatActivity;
 import com.example.vogabond.chatapp.activity.UI;
 import com.example.vogabond.chatapp.preference.Preferences;
 import com.example.vogabond.chatapp.util.sys.SysInfoUtil;

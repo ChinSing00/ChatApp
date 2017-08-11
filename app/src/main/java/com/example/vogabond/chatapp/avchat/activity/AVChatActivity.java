@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.avchat.activity;
+package com.example.vogabond.chatapp.avchat.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,12 +10,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.avchat.AVChatNotification;
-import com.example.vogabond.chatapp.helper.avchat.AVChatProfile;
-import com.example.vogabond.chatapp.helper.avchat.AVChatSoundPlayer;
-import com.example.vogabond.chatapp.helper.avchat.AVChatUI;
-import com.example.vogabond.chatapp.helper.avchat.constant.CallStateEnum;
-import com.example.vogabond.chatapp.helper.avchat.receiver.PhoneCallStateObserver;
+import com.example.vogabond.chatapp.avchat.AVChatNotification;
+import com.example.vogabond.chatapp.avchat.AVChatProfile;
+import com.example.vogabond.chatapp.avchat.AVChatSoundPlayer;
+import com.example.vogabond.chatapp.avchat.AVChatUI;
+import com.example.vogabond.chatapp.avchat.contact.CallStateEnum;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nim.uikit.common.util.sys.NetworkUtil;

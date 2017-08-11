@@ -1,7 +1,8 @@
-package com.example.vogabond.chatapp.helper.avchat;
+package com.example.vogabond.chatapp.avchat;
 
+import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.helper.DemoCache;
-import com.example.vogabond.chatapp.helper.avchat.activity.AVChatActivity;
+import com.example.vogabond.chatapp.avchat.activity.AVChatActivity;
 import com.example.vogabond.chatapp.helper.common.infra.Handlers;
 import com.netease.nimlib.sdk.avchat.model.AVChatData;
 
@@ -35,13 +36,13 @@ public class AVChatProfile {
             @Override
             public void run() {
                 // 启动，如果 task正在启动，则稍等一下
-                if (!DemoCache.isMainTaskLaunching()) {
-                    AVChatActivity.launch(DemoCache.getContext(), data, source);
+                if (!MyCache.isMainTaskLaunching()) {
+                    AVChatActivity.launch(MyCache.getContext(), data, source);
                 } else {
                     launchActivity(data, source);
                 }
             }
         };
-        Handlers.sharedHandler(DemoCache.getContext()).postDelayed(runnable, 200);
+        Handlers.sharedHandler(MyCache.getContext()).postDelayed(runnable, 200);
     }
 }

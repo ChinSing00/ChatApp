@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.avchat.receiver;
+package com.example.vogabond.chatapp.avchat.receiver;
 
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -17,12 +17,7 @@ import java.util.List;
  */
 
 public class PhoneCallStateObserver {
-    public enum PhoneCallStateEnum {
-        IDLE,           // 空闲
-        INCOMING_CALL,  // 有来电
-        DIALING_OUT,    // 呼出电话已经接通
-        DIALING_IN      // 来电已接通
-    }
+
 
     private final String TAG = "PhoneCallStateObserver";
 

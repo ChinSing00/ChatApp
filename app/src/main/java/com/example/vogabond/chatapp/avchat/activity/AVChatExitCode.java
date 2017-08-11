@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.avchat.activity;
+package com.example.vogabond.chatapp.avchat.activity;
 
 /**
  * Created by MSI on 2017/8/8.

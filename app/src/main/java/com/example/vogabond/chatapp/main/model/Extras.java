@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.helper.main.model;
+package com.example.vogabond.chatapp.main.model;
 
 /**
  * Created by MSI on 2017/8/9.
