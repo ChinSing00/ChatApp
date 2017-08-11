@@ -1,9 +1,8 @@
 package com.example.vogabond.chatapp.avchat;
 
 import com.example.vogabond.chatapp.MyCache;
-import com.example.vogabond.chatapp.helper.DemoCache;
 import com.example.vogabond.chatapp.avchat.activity.AVChatActivity;
-import com.example.vogabond.chatapp.helper.common.infra.Handlers;
+import com.example.vogabond.chatapp.common.infra.Handlers;
 import com.netease.nimlib.sdk.avchat.model.AVChatData;
 
 /**

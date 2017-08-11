@@ -13,8 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.DemoCache;
+import com.example.vogabond.chatapp.avchat.contact.CallStateEnum;
 import com.netease.nim.uikit.common.util.sys.ScreenUtil;
 import com.netease.nimlib.sdk.avchat.AVChatManager;
 import com.netease.nimlib.sdk.avchat.constant.AVChatVideoScalingType;
@@ -195,7 +196,7 @@ public class AVChatSurface {
          * 设置画布，加入到自己的布局中，用于呈现视频图像
          * account 要显示视频的用户帐号
          */
-        if (DemoCache.getAccount().equals(account)) {
+        if (MyCache.getAccount().equals(account)) {
             AVChatManager.getInstance().setupLocalVideoRender(largeRender, false, AVChatVideoScalingType.SCALE_ASPECT_BALANCED);
         } else {
             AVChatManager.getInstance().setupRemoteVideoRender(account, largeRender, false, AVChatVideoScalingType.SCALE_ASPECT_BALANCED);
@@ -218,7 +219,7 @@ public class AVChatSurface {
          * 设置画布，加入到自己的布局中，用于呈现视频图像
          * account 要显示视频的用户帐号
          */
-        if (DemoCache.getAccount().equals(account)) {
+        if (MyCache.getAccount().equals(account)) {
             AVChatManager.getInstance().setupLocalVideoRender(smallRender, false, AVChatVideoScalingType.SCALE_ASPECT_BALANCED);
         } else {
             AVChatManager.getInstance().setupRemoteVideoRender(account, smallRender, false, AVChatVideoScalingType.SCALE_ASPECT_BALANCED);
@@ -370,12 +371,12 @@ public class AVChatSurface {
     private void switchRender(String user1, String user2) {
 
         //先取消用户的画布
-        if (DemoCache.getAccount().equals(user1)) {
+        if (MyCache.getAccount().equals(user1)) {
             AVChatManager.getInstance().setupLocalVideoRender(null, false, 0);
         } else {
             AVChatManager.getInstance().setupRemoteVideoRender(user1, null, false, 0);
         }
-        if (DemoCache.getAccount().equals(user2)) {
+        if (MyCache.getAccount().equals(user2)) {
             AVChatManager.getInstance().setupLocalVideoRender(null, false, 0);
         } else {
             AVChatManager.getInstance().setupRemoteVideoRender(user2, null, false, 0);
@@ -394,12 +395,12 @@ public class AVChatSurface {
         }
 
         //重新设置上画布
-        if (user1 == DemoCache.getAccount()) {
+        if (user1 == MyCache.getAccount()) {
             AVChatManager.getInstance().setupLocalVideoRender(render1, false, AVChatVideoScalingType.SCALE_ASPECT_BALANCED);
         } else {
             AVChatManager.getInstance().setupRemoteVideoRender(user1, render1, false, AVChatVideoScalingType.SCALE_ASPECT_BALANCED);
         }
-        if (user2 == DemoCache.getAccount()) {
+        if (user2 == MyCache.getAccount()) {
             AVChatManager.getInstance().setupLocalVideoRender(render2, false, AVChatVideoScalingType.SCALE_ASPECT_BALANCED);
         } else {
             AVChatManager.getInstance().setupRemoteVideoRender(user2, render2, false, AVChatVideoScalingType.SCALE_ASPECT_BALANCED);

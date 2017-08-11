@@ -10,12 +10,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.vogabond.chatapp.R;
+import com.example.vogabond.chatapp.activity.UI;
 import com.example.vogabond.chatapp.avchat.AVChatNotification;
 import com.example.vogabond.chatapp.avchat.AVChatProfile;
 import com.example.vogabond.chatapp.avchat.AVChatSoundPlayer;
 import com.example.vogabond.chatapp.avchat.AVChatUI;
-import com.example.vogabond.chatapp.avchat.contact.CallStateEnum;
-import com.netease.nim.uikit.common.activity.UI;
+import com.example.vogabond.chatapp.avchat.receiver.PhoneCallStateObserver;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nim.uikit.common.util.sys.NetworkUtil;
 import com.netease.nimlib.sdk.NIMClient;
@@ -407,7 +407,7 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
                 onAudioToVideo();
                 break;
             case AVChatControlCommand.SWITCH_AUDIO_TO_VIDEO_REJECT:
-                avChatUI.onCallStateChange(CallStateEnum.AUDIO);
+               // avChatUI.onCallStateChange(CallStateEnum.AUDIO);
                 Toast.makeText(AVChatActivity.this, R.string.avchat_switch_video_reject, Toast.LENGTH_SHORT).show();
                 break;
             case AVChatControlCommand.SWITCH_VIDEO_TO_AUDIO:
@@ -437,7 +437,7 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
      * 视频切换为音频
      */
     private void onVideoToAudio() {
-        avChatUI.onCallStateChange(CallStateEnum.AUDIO);
+       // avChatUI.onCallStateChange(CallStateEnum.AUDIO);
         avChatUI.onVideoToAudio();
     }
 
@@ -571,10 +571,10 @@ public class AVChatActivity extends UI implements AVChatUI.AVChatListener,AVChat
             avChatUI.setTimeBase(SystemClock.elapsedRealtime());
 
         if (state == AVChatType.AUDIO.getValue()) {
-            avChatUI.onCallStateChange(CallStateEnum.AUDIO);
+            //avChatUI.onCallStateChange(CallStateEnum.AUDIO);
         } else {
             avChatUI.initSmallSurfaceView();
-            avChatUI.onCallStateChange(CallStateEnum.VIDEO);
+            //avChatUI.onCallStateChange(CallStateEnum.VIDEO);
         }
         isCallEstablished = true;
     }

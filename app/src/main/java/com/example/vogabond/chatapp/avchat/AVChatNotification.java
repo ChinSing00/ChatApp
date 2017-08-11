@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
 import com.example.vogabond.chatapp.R;
+import com.example.vogabond.chatapp.avchat.activity.AVChatActivity;
 import com.example.vogabond.chatapp.main.activity.WelcomeActivity;
+import com.example.vogabond.chatapp.main.model.Extras;
 import com.netease.nim.uikit.cache.NimUserInfoCache;
 import com.netease.nim.uikit.session.activity.P2PMessageActivity;
 

@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.contact.RobotProfileActivity;
-import com.example.vogabond.chatapp.contact.UserProfileActivity;
+import com.example.vogabond.chatapp.contact.activity.RobotProfileActivity;
+import com.example.vogabond.chatapp.contact.activity.UserProfileActivity;
 import com.example.vogabond.chatapp.session.action.AVChatAction;
 import com.example.vogabond.chatapp.session.activity.MSG_HistoryAcitivity;
 import com.example.vogabond.chatapp.session.activity.MSG_InfoActivity;

@@ -1,4 +1,4 @@
-package commoon.ui.viewpager.infra;
+package com.example.vogabond.chatapp.common.infra;
 
 import android.content.Context;
 import android.os.Handler;
@@ -13,62 +13,81 @@ import java.util.HashMap;
  */
 
 public final class Handlers {
-    public static final String DEFAULT_TAG="Defaut";
+    public static final String DEFAULT_TAG = "Default";
 
-    private static Handler instance;
+    private static Handlers instance;
 
-    public static synchronized Handler sharedInstance(){
-        if (instance == null){
-            instance = new Handler();
+    public static synchronized Handlers sharedInstance() {
+        if (instance == null) {
+            instance = new Handlers();
         }
+
         return instance;
     }
-    public static Handler shaerdHandle;
 
+    private static Handler sharedHandler;
 
-    public static final Handler shaerdHandle(Context context) {
+    /**
+     * get shared handler for main looper
+     * @param context
+     * @return
+     */
+    public static final Handler sharedHandler(Context context) {
+        /**
+         * duplicate handlers !!! i don't care
+         */
 
-        if (shaerdHandle ==null){
-            shaerdHandle = new Handler(context.getMainLooper());
+        if (sharedHandler == null) {
+            sharedHandler = new Handler(context.getMainLooper());
         }
-        return shaerdHandle;
+
+        return sharedHandler;
     }
 
-    public static final Handler newHandler(Context context){
+    /**
+     * get new handler for main looper
+     * @param context
+     * @return
+     */
+    public static final Handler newHandler(Context context) {
         return new Handler(context.getMainLooper());
     }
-    private Handlers(){
+
+    private Handlers() {
 
     }
-    public final Handler newHandler(){
+
+    /**
+     * get new handler for a background default looper
+     * @return
+     */
+    public final Handler newHandler() {
         return newHandler(DEFAULT_TAG);
     }
 
+    /**
+     * get new handler for a background stand alone looper identified by tag
+     * @param tag
+     * @return
+     */
     public final Handler newHandler(String tag) {
         return new Handler(getHandlerThread(tag).getLooper());
     }
-    private final HashMap<String,HandlerThread> threads = new HashMap<String, HandlerThread>();
-
-    private HandlerThread getHandlerThread(String tag) {
+    private final HashMap<String, HandlerThread> threads = new HashMap<String, HandlerThread>();
+    private final HandlerThread getHandlerThread(String tag) {
         HandlerThread handlerThread = null;
-
-        synchronized (threads){
+        synchronized (threads) {
             handlerThread = threads.get(tag);
-
-            if (handlerThread == null){
+            if (handlerThread == null) {
                 handlerThread = new HandlerThread(nameOfTag(tag));
-
                 handlerThread.start();
-
-                threads.put(tag,handlerThread);
+                threads.put(tag, handlerThread);
             }
         }
-
         return handlerThread;
-    };
-
-    private final static String nameOfTag(String tag){
-        return "HT-" + (TextUtils.isEmpty(tag) ? DEFAULT_TAG :tag) ;
+    }
+    private final static String nameOfTag(String tag) {
+        return "HT-" + (TextUtils.isEmpty(tag) ? DEFAULT_TAG : tag);
     }
 
 }

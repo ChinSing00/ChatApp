@@ -11,9 +11,10 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.DemoCache;
 import com.example.vogabond.chatapp.avchat.activity.AVChatExitCode;
+import com.example.vogabond.chatapp.avchat.contact.CallStateEnum;
 import com.example.vogabond.chatapp.avchat.widgets.MultiSelectDialog;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
 import com.netease.nim.uikit.common.util.log.LogUtil;
@@ -306,7 +307,7 @@ public class AVChatUI implements AVChatUIListener{
                         return;
                     }
 
-                    initLargeSurfaceView(DemoCache.getAccount());
+                    initLargeSurfaceView(MyCache.getAccount());
                     canSwitchCamera = true;
                     onCallStateChange(CallStateEnum.OUTGOING_VIDEO_CALLING);
                 }
@@ -661,7 +662,7 @@ public class AVChatUI implements AVChatUIListener{
                     AVChatManager.getInstance().stopAudioRecording();
                 }
                 if (recordList.get(1).second) {
-                    AVChatManager.getInstance().stopAVRecording(DemoCache.getAccount());
+                    AVChatManager.getInstance().stopAVRecording(MyCache.getAccount());
                 }
                 if (recordList.get(2).second) {
                     AVChatManager.getInstance().stopAVRecording(receiverId);
@@ -697,7 +698,7 @@ public class AVChatUI implements AVChatUIListener{
                                     AVChatManager.getInstance().startAudioRecording();
                                 }
                                 if (selectDialogList.get(1).second) {
-                                    AVChatManager.getInstance().startAVRecording(DemoCache.getAccount());
+                                    AVChatManager.getInstance().startAVRecording(MyCache.getAccount());
                                 }
                                 if (selectDialogList.get(2).second) {
                                     AVChatManager.getInstance().startAVRecording(receiverId);
@@ -856,7 +857,7 @@ public class AVChatUI implements AVChatUIListener{
      */
     public void initAllSurfaceView(String largeAccount) {
         avChatSurface.initLargeSurfaceView(largeAccount);
-        avChatSurface.initSmallSurfaceView(DemoCache.getAccount());
+        avChatSurface.initSmallSurfaceView(MyCache.getAccount());
     }
 
     public void initLargeSurfaceView(String account) {
@@ -864,7 +865,7 @@ public class AVChatUI implements AVChatUIListener{
     }
 
     public void initSmallSurfaceView() {
-        avChatSurface.initSmallSurfaceView(DemoCache.getAccount());
+        avChatSurface.initSmallSurfaceView(MyCache.getAccount());
     }
 
     /**

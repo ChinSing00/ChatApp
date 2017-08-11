@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.helper.DemoCache;
+import com.example.vogabond.chatapp.avchat.contact.CallStateEnum;
 import com.example.vogabond.chatapp.avchat.widgets.ToggleListener;
 import com.example.vogabond.chatapp.avchat.widgets.ToggleState;
 import com.example.vogabond.chatapp.avchat.widgets.ToggleView;
@@ -354,7 +354,6 @@ public class AVChatAudio implements View.OnClickListener,ToggleListener{
         }
     }
 
-    /******************************* toggle listener *************************/
     @Override
     public void toggleOn(View v) {
         onClick(v);
