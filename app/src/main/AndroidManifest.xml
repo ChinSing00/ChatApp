@@ -40,9 +40,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".helper.Login.LoginActivity"/>
+        <activity android:name=".Login.LoginActivity"/>
         <activity android:name=".main.activity.HomeActivity"/>
-        <activity android:name=".helper.Login.RegisterActivity"/>
+        <activity android:name=".Login.RegisterActivity"/>
+        <activity android:name=".team.AdvancedTeamJoinActivity"/>
+        <activity android:name=".team.AdvancedTeamSearchActivity"/>
+        <activity
+        android:name=".main.activity.SettingsActivity"
+        android:configChanges="orientation"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="contact.AddFriendActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name="contact.UserProfileEditItemActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".helper.contact.UserProfileSettingActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
         <meta-data
             android:name="com.netease.nim.appKey"
