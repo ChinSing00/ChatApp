@@ -1,6 +1,7 @@
 package com.example.vogabond.chatapp.chatroom.fragment;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,6 @@ import com.example.vogabond.chatapp.chatroom.fragment.tab.ChatRoomTabFragment;
 import com.example.vogabond.chatapp.chatroom.helper.ChatRoomHelper;
 import com.example.vogabond.chatapp.common.infra.Handlers;
 import com.example.vogabond.chatapp.common.ui.viewpager.FadeInOutPageTransformer;
-import com.example.vogabond.chatapp.common.ui.viewpager.PagerSlidingTabStrip;
 import com.netease.nim.uikit.common.ui.barrage.BarrageConfig;
 import com.netease.nim.uikit.common.ui.barrage.BarrageSurfaceView;
 import com.netease.nimlib.sdk.NIMClient;
@@ -30,7 +30,7 @@ import com.netease.nimlib.sdk.chatroom.ChatRoomService;
  */
 
 public class ChatRoomFragment extends ChatRoomTabFragment implements ViewPager.OnPageChangeListener {
-    private PagerSlidingTabStrip tabs;
+    private TabLayout tabs;
     private ViewPager viewPager;
     private ChatRoomTabPagerAdapter adapter;
     private int scrollState;
@@ -60,7 +60,7 @@ public class ChatRoomFragment extends ChatRoomTabFragment implements ViewPager.O
 
         findViews();
         setupPager();
-        setupTabs();
+
     }
 
 
@@ -129,42 +129,20 @@ public class ChatRoomFragment extends ChatRoomTabFragment implements ViewPager.O
         viewPager.setOnPageChangeListener(this);
     }
 
-    private void setupTabs() {
-        tabs.setOnCustomTabListener(new PagerSlidingTabStrip.OnCustomTabListener(){
-            @Override
-            public int getTabLayoutResId(int position) {
-                return R.layout.chat_room_tab_layout;
-            }
 
-            @Override
-            public boolean screenAdaptation() {
-                return true;
-            }
-        });
-        tabs.setViewPager(viewPager);
-        tabs.setOnTabClickListener(adapter);
-        tabs.setOnTabDoubleTapListener(adapter);
-    }
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        //TO TABS
-        tabs.onPageScrolled(position,positionOffset,positionOffsetPixels);
-        //TO ADAPTER
-        adapter.onPageScrolled(position);
+
     }
 
     @Override
     public void onPageSelected(int position) {
-        //TO TABS
-        tabs.onPageScrolled(position);
 
-        selectPage(position);
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
         //TO TABS
-        tabs.onPageScrollStateChanged(state);
         scrollState = state;
         selectPage(viewPager.getCurrentItem());
     }
