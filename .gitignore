@@ -58,5 +58,3 @@ build/
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
 *.iml
-
-*.gradle
