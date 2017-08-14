@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.main.adapter.FragmentPageAdapter;
+import com.example.vogabond.chatapp.main.fragment.ContactListFragment;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.recent.RecentContactsFragment;
 
@@ -51,6 +52,7 @@ public class MainActivity extends UI implements RadioGroup.OnCheckedChangeListen
         Radio_Group = (RadioGroup) findViewById(R.id.Radio_Group_Main);
         Radio_Group.setOnCheckedChangeListener(this);
         dataList.add(0,new RecentContactsFragment());
+        dataList.add(1,new ContactListFragment());
         view_pager.setOnPageChangeListener(this);
         FragmentManager fm = getSupportFragmentManager();
         FragmentPagerAdapter fp  = new FragmentPageAdapter(fm,dataList);
@@ -60,14 +62,17 @@ public class MainActivity extends UI implements RadioGroup.OnCheckedChangeListen
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
         switch (i){
-            case 0 :
-
+            case R.id.news_buttom :
+                view_pager.setCurrentItem(0);
                 break;
-            case 1 :
+            case R.id.friends_buttom :
+                view_pager.setCurrentItem(2);
                 break;
-            case 2 :
+            case R.id.find_buttom :
+                view_pager.setCurrentItem(3);
                 break;
-            case 3 :
+            case R.id.we_buttom :
+                view_pager.setCurrentItem(4);
                 break;
         }
     }
@@ -81,12 +86,16 @@ public class MainActivity extends UI implements RadioGroup.OnCheckedChangeListen
     public void onPageSelected(int position) {
         switch (position){
             case 0 :
+                Radio_Group.check(R.id.news_buttom);
                 break;
             case 1 :
+                Radio_Group.check(R.id.friends_buttom );
                 break;
             case 2 :
+                Radio_Group.check(R.id.find_buttom);
                 break;
             case 3 :
+                Radio_Group.check(R.id.we_buttom);
                 break;
 
         }

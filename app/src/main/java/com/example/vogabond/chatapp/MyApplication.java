@@ -38,8 +38,6 @@ import com.netease.nimlib.sdk.avchat.model.AVChatData;
 import com.netease.nimlib.sdk.msg.MessageNotifierCustomization;
 import com.netease.nimlib.sdk.msg.MsgService;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
-import com.netease.nimlib.sdk.rts.RTSManager;
-import com.netease.nimlib.sdk.rts.model.RTSData;
 import com.netease.nimlib.sdk.team.constant.TeamFieldEnum;
 import com.netease.nimlib.sdk.team.model.IMMessageFilter;
 import com.netease.nimlib.sdk.team.model.UpdateTeamAttachment;
@@ -312,7 +310,7 @@ public class MyApplication extends Application{
 
         @Override
         public String makeTicker(String nick, IMMessage message) {
-            return null; // 采用SDK默认文案
+            return null;
         }
     };
 

@@ -30,10 +30,7 @@ import com.netease.nim.uikit.permission.annotation.OnMPermissionNeverAskAgain;
 import com.netease.nimlib.sdk.AbortableFuture;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallback;
-import com.netease.nimlib.sdk.RequestCallbackWrapper;
-import com.netease.nimlib.sdk.ResponseCode;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;
-import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.auth.LoginInfo;
 
 /**
@@ -66,9 +63,7 @@ public class LoginActivity extends UI implements View.OnClickListener{
         requestBasicPermission();
     }
 
-    /**
-     * 基本权限管理
-     */
+
 
     private final String[] BASIC_PERMISSIONS = new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -128,6 +123,7 @@ public class LoginActivity extends UI implements View.OnClickListener{
                 if (loginRequest != null) {
                     loginRequest.abort();
                     onLoginDone();
+                    Log.e("loginRequst","+++++++++++");
                 }
             }
         }).setCanceledOnTouchOutside(false);
@@ -142,13 +138,9 @@ public class LoginActivity extends UI implements View.OnClickListener{
                 onLoginDone();
                 Log.e("OnSuccess","" +
                         "======================");
-                MyCache.setAccount(account);
-                saveLoginInfo(account, token);
-
-                // 初始化消息提醒配置
+//                MyCache.setAccount(account);
+//                saveLoginInfo(account, token);
                 initNotificationConfig();
-
-                // 进入主界面
                 MainActivity.start(LoginActivity.this, null);
                 finish();
             }
@@ -162,7 +154,6 @@ public class LoginActivity extends UI implements View.OnClickListener{
                     Toast.makeText(LoginActivity.this, "登录失败: " + code, Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onException(Throwable exception) {
                 Toast.makeText(LoginActivity.this, R.string.login_exception, Toast.LENGTH_LONG).show();
