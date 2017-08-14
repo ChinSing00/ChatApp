@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vogabond.chatapp.ContactHttpClient;
@@ -21,6 +22,7 @@ import com.netease.nim.uikit.common.util.sys.NetworkUtil;
 public class RegisterActivity extends UI implements View.OnKeyListener,View.OnClickListener{
     private EditText edit_register_account,edit_register_password,edit_register_nickname;
     private Button button_register;
+    private TextView register_login;
 
     @Override
     public boolean onKey(View view, int i, KeyEvent keyEvent) {
@@ -38,13 +40,25 @@ public class RegisterActivity extends UI implements View.OnKeyListener,View.OnCl
         edit_register_account = (EditText) findViewById(R.id.edit_register_account);
         edit_register_password = (EditText) findViewById(R.id.edit_register_password);
         edit_register_nickname = (EditText) findViewById(R.id.edit_register_nickname);
+        register_login = (TextView) findViewById(R.id.register_login);
         button_register = (Button) findViewById(R.id.button_register);
+        register_login.setOnClickListener(this);
         button_register.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        register();
+        switch (view.getId()){
+
+            case R.id.button_register:
+
+                register();
+
+                break;
+            case R.id.register_login:
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(intent);
+        }
         }
 
         private void register(){

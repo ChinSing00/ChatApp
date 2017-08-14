@@ -216,51 +216,5 @@ public class LoginActivity extends UI implements View.OnClickListener{
         }
         return null;
     }
-    /**
-     * *********** 假登录示例：假登录后，可以查看该用户数据，但向云信发送数据会失败；随后手动登录后可以发数据 **************
-     */
-    private void fakeLoginTest() {
-        // 获取账号、密码；账号用于假登录，密码在手动登录时需要
-        final String account = edit_login_account.getEditableText().toString().toLowerCase();
-        final String token = tokenFromPassword(edit_login_password.getEditableText().toString());
 
-        // 执行假登录
-        boolean res = NIMClient.getService(AuthService.class).openLocalCache(account); // SDK会将DB打开，支持查询。
-        Log.i("test", "fake login " + (res ? "success" : "failed"));
-
-        if (!res) {
-            return;
-        }
-
-        // Demo缓存当前假登录的账号
-        MyCache.setAccount(account);
-
-        // 初始化消息提醒配置
-        initNotificationConfig();
-
-        // 构建缓存
-        //DataCacheManager.buildDataCacheAsync();
-        NimUIKit.getImageLoaderKit().buildImageCache();
-
-        // 进入主界面，此时可以查询数据（最近联系人列表、本地消息历史、群资料等都可以查询，但当云信服务器发起请求会返回408超时）
-        MainActivity.start(LoginActivity.this, null);
-
-        // 演示15s后手动登录，登录成功后，可以正常收发数据
-        getHandler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                loginRequest = NIMClient.getService(AuthService.class).login(new LoginInfo(account, token));
-                loginRequest.setCallback(new RequestCallbackWrapper() {
-                    @Override
-                    public void onResult(int code, Object result, Throwable exception) {
-                        Log.i("test", "real login, code=" + code);
-                        if (code == ResponseCode.RES_SUCCESS) {
-                            saveLoginInfo(account, token);
-                            finish();
-                        }
-                    }
-                });
-            }
-        }, 15 * 1000);
-    }
 }
