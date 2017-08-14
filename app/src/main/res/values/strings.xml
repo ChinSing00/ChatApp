@@ -255,7 +255,7 @@
     <string name="js_bridge_demonstration">Js Bridge演示</string>
 
     <!--机器人-->
-    <string name="nim_robot_title">云小信机器人</string>
+    <string name="nim_robot_title">聋小猪机器人</string>
     <string name="robot_start_chat">开始对话</string>
 
     <!-- NRTC -->
