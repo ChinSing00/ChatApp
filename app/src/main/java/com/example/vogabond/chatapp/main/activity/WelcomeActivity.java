@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.vogabond.chatapp.Login.LoginActivity;
 import com.example.vogabond.chatapp.MyCache;
@@ -46,28 +47,30 @@ public class WelcomeActivity extends UI {
     @Override
     protected void onResume() {
         super.onResume();
+           if (firstEnter) {
+                firstEnter = false;
+               Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            customSplash = false;
+            if (canAutoLogin()) {
 
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    customSplash = false;
-                    if (firstEnter) {
-                        LoginActivity.start(WelcomeActivity.this);
-                        finish();
+                onIntent();
 
-                    } else if (canAutoLogin()){
+            } else{
 
-                        onIntent();
+                LoginActivity.start(WelcomeActivity.this);
+                finish();
 
-                    }
-                    firstEnter = false;
-                }
-            };
-            if (customSplash) {
-                new Handler().postDelayed(runnable, 1000);
-            } else {
-                runnable.run();
             }
+        }
+    };
+    if (customSplash) {
+        new Handler().postDelayed(runnable, 1000);
+    } else {
+        runnable.run();
+    }
+}
         }
 
     @Override
