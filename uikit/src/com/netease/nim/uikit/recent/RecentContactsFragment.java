@@ -199,7 +199,8 @@ public class RecentContactsFragment extends TFragment {
                 RecentContact recent = adapter.getItem(position);
                 callback.onItemClick(recent);
             }
-        }
+
+    }
 
         @Override
         public void onItemLongClick(RecentContactAdapter adapter, View view, int position) {

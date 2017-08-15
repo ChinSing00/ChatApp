@@ -12,8 +12,8 @@ import android.widget.RadioGroup;
 
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.main.adapter.FragmentPageAdapter;
-import com.example.vogabond.chatapp.main.fragment.ContactListFragment;
 import com.netease.nim.uikit.common.activity.UI;
+import com.netease.nim.uikit.contact.ContactsFragment;
 import com.netease.nim.uikit.recent.RecentContactsFragment;
 
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class MainActivity extends UI implements RadioGroup.OnCheckedChangeListen
         Radio_Group = (RadioGroup) findViewById(R.id.Radio_Group_Main);
         Radio_Group.setOnCheckedChangeListener(this);
         dataList.add(0,new RecentContactsFragment());
-        dataList.add(1,new ContactListFragment());
+        dataList.add(1,new ContactsFragment());
         view_pager.setOnPageChangeListener(this);
         FragmentManager fm = getSupportFragmentManager();
         FragmentPagerAdapter fp  = new FragmentPageAdapter(fm,dataList);

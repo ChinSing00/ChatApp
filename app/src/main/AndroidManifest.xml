@@ -50,7 +50,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
+        <activity android:name=".avchat.activity.AVChatSettingsActivity"/>
         <activity
             android:name=".Login.LoginActivity"
             android:configChanges="orientation"
@@ -65,9 +65,16 @@
             android:theme="@style/LoginTheme"
             android:label="@string/register"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity android:name=".main.activity.MainActivity"></activity>
-
+        <activity android:name=".contact.activity.AddFriendActivity"/>
+        <activity android:name=".contact.activity.UserProfileActivity"/>
+        <activity android:name=".contact.activity.RobotProfileActivity"/>
+        <activity android:name=".contact.activity.UserProfileSettingActivity"/>
+        <activity android:name=".main.activity.TeamListActivity"/>
+        <activity android:name=".team.AdvancedTeamJoinActivity"/>
+        <activity android:name=".session.activity.MSG_InfoActivity"/>
+        <activity android:name=".session.activity.MSG_HistoryAcitivity"/>
+        <activity android:name=".avchat.activity.AVChatActivity"/>
         <meta-data
             android:name="com.netease.nim.appKey"
             android:value="45c6af3c98409b18a84451215d0bdd6e" />

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -69,24 +70,17 @@ public class SessionHelper {
     public static void init() {
         // 注册自定义消息附件解析器
         //NIMClient.getService(MsgService.class).registerCustomAttachmentParser(new CustomAttachParser());
-
         // 注册各种扩展消息类型的显示ViewHolder
         registerViewHolders();
-
         // 设置会话中点击事件响应处理
         setSessionListener();
-
         // 注册消息转发过滤器
        // registerMsgForwardFilter();
-
         // 注册消息撤回过滤器
         //registerMsgRevokeFilter();
-
         // 注册消息撤回监听器
         registerMsgRevokeObserver();
-
         NimUIKit.setCommonP2PSessionCustomization(getP2pCustomization());
-
         NimUIKit.setCommonTeamSessionCustomization(getTeamCustomization());
     }
 
@@ -391,7 +385,8 @@ public class SessionHelper {
                         return;
                     }
                 }
-                UserProfileActivity.start((MSG_InfoActivity) context, message.getFromAccount());
+                Log.e("is click","****//****");
+                UserProfileActivity.start(context, message.getFromAccount());
             }
 
             @Override

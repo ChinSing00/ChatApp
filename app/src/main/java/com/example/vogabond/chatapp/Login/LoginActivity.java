@@ -138,8 +138,8 @@ public class LoginActivity extends UI implements View.OnClickListener{
                 onLoginDone();
                 Log.e("OnSuccess","" +
                         "======================");
-//                MyCache.setAccount(account);
-//                saveLoginInfo(account, token);
+                MyCache.setAccount(account);
+                saveLoginInfo(account, token);
                 initNotificationConfig();
                 MainActivity.start(LoginActivity.this, null);
                 finish();

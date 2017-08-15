@@ -13,6 +13,7 @@ import com.netease.nim.uikit.R;
 import com.netease.nim.uikit.cache.FriendDataCache;
 import com.netease.nim.uikit.model.ToolBarOptions;
 import com.netease.nim.uikit.session.SessionCustomization;
+import com.netease.nim.uikit.session.SessionEventListener;
 import com.netease.nim.uikit.session.constant.Extras;
 import com.netease.nim.uikit.session.fragment.MessageFragment;
 import com.netease.nim.uikit.uinfo.UserInfoHelper;
@@ -33,7 +34,7 @@ import java.util.Set;
  * <p/>
  * Created by huangjun on 2015/2/1.
  */
-public class P2PMessageActivity extends BaseMessageActivity {
+public class P2PMessageActivity extends BaseMessageActivity implements SessionEventListener {
 
     private boolean isResume = false;
 
@@ -222,5 +223,15 @@ public class P2PMessageActivity extends BaseMessageActivity {
     protected void initToolBar() {
         ToolBarOptions options = new ToolBarOptions();
         setToolBar(R.id.toolbar, options);
+    }
+
+    @Override
+    public void onAvatarClicked(Context context, IMMessage message) {
+
+    }
+
+    @Override
+    public void onAvatarLongClicked(Context context, IMMessage message) {
+
     }
 }

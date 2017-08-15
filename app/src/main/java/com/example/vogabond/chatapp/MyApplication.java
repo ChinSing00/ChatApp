@@ -83,7 +83,6 @@ public class MyApplication extends Application{
 
             // 注册语言变化监听
             registerLocaleReceiver(true);
-
 //            OnlineStateEventManager.init();
         }
     }
@@ -91,7 +90,6 @@ public class MyApplication extends Application{
     private LoginInfo getLoginInfo() {
         String account = Preferences.getUserAccount();
         String token = Preferences.getUserToken();
-
         if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(token)) {
             MyCache.setAccount(account.toLowerCase());
             return new LoginInfo(account, token);
@@ -121,8 +119,7 @@ public class MyApplication extends Application{
         // 用户信息提供者
         options.userInfoProvider = new DefaultUserInfoProvider(this);
 
-        // 定制通知栏提醒文案（可选，如果不定制将采用SDK默认文案）
-        options.messageNotifierCustomization = messageNotifierCustomization;
+
 
         // 在线多端同步未读数
         options.sessionReadAck = true;
@@ -301,6 +298,7 @@ public class MyApplication extends Application{
 
 //        NimUIKit.setOnlineStateContentProvider(new DemoOnlineStateContentProvider());
     }
+
 
     private MessageNotifierCustomization messageNotifierCustomization = new MessageNotifierCustomization() {
         @Override
