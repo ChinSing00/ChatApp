@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.RadioGroup;
 
 import com.example.vogabond.chatapp.R;
@@ -61,6 +63,13 @@ public class MainActivity extends UI implements RadioGroup.OnCheckedChangeListen
         getFragPageData();
         FragmentPagerAdapter fp  = new FragmentPageAdapter(fm,dataList);
         view_pager.setAdapter(fp);
+    }
+    //顶部导航栏
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_menu,menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     @Override
