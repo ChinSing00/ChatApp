@@ -47,14 +47,18 @@ public class MainActivity extends UI implements RadioGroup.OnCheckedChangeListen
         getView();
     }
 
+    private void getFragPageData() {
+        dataList.add(0,new RecentContactsFragment());
+        dataList.add(1,new ContactsFragment());
+    }
+
     public void getView() {
         view_pager = (ViewPager) findViewById(R.id.view_pager);
         Radio_Group = (RadioGroup) findViewById(R.id.Radio_Group_Main);
         Radio_Group.setOnCheckedChangeListener(this);
-        dataList.add(0,new RecentContactsFragment());
-        dataList.add(1,new ContactsFragment());
         view_pager.setOnPageChangeListener(this);
         FragmentManager fm = getSupportFragmentManager();
+        getFragPageData();
         FragmentPagerAdapter fp  = new FragmentPageAdapter(fm,dataList);
         view_pager.setAdapter(fp);
     }
