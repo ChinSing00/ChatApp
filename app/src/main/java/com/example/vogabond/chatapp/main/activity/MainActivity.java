@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.widget.RadioGroup;
 
 import com.example.vogabond.chatapp.R;
+import com.example.vogabond.chatapp.chatroom.fragment.ChatRoomFragment;
 import com.example.vogabond.chatapp.main.adapter.FragmentPageAdapter;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.contact.ContactsFragment;
@@ -52,6 +53,7 @@ public class MainActivity extends UI implements RadioGroup.OnCheckedChangeListen
     private void getFragPageData() {
         dataList.add(0,new RecentContactsFragment());
         dataList.add(1,new ContactsFragment());
+        dataList.add(3,new ChatRoomFragment());
     }
 
     public void getView() {

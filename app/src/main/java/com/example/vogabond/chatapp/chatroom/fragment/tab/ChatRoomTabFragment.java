@@ -32,7 +32,7 @@ public abstract class ChatRoomTabFragment extends TabFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
-    private void attachTabData(ChatRoomTab tabData){
+    public void attachTabData(ChatRoomTab tabData){
         this.tabData = tabData;
     }
 
