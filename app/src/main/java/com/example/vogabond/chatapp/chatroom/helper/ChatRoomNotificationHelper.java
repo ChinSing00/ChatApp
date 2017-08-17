@@ -2,7 +2,7 @@ package com.example.vogabond.chatapp.chatroom.helper;
 
 import android.text.TextUtils;
 
-import com.example.vogabond.chatapp.chatroom.DemoCache;
+import com.example.vogabond.chatapp.MyCache;
 import com.netease.nimlib.sdk.chatroom.model.ChatRoomNotificationAttachment;
 
 import java.util.List;
@@ -91,7 +91,7 @@ public class ChatRoomNotificationHelper {
         List<String> targets = attachment.getTargetNicks();
         if (attachment.getTargetNicks() != null) {
             for (int i = 0; i < targets.size(); i++) {
-                sb.append(DemoCache.getAccount().equals(accounts.get(i)) ? "你" : targets.get(i));
+                sb.append(MyCache.getAccount().equals(accounts.get(i)) ? "你" : targets.get(i));
                 sb.append(",");
             }
             sb.deleteCharAt(sb.length() - 1);

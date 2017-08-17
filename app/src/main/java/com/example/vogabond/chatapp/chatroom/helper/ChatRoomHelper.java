@@ -9,7 +9,6 @@ import com.example.vogabond.chatapp.R;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 
@@ -27,7 +26,7 @@ public class ChatRoomHelper {
 
     public static void init(){
         ChatRoomMemberCache.getInstance().clear();
-        ChatRoomMemberCache.getInstance().registerObservers();
+        ChatRoomMemberCache.getInstance().registerObservers(true);
     }
     public static void setCoveImage(String roomId, ImageView coverImage,boolean blur){
         if (roomCoverMap.containsKey(roomId)){
