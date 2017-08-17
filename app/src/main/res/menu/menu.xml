@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_me"
+            android:icon="@mipmap/ic_menu_me"
+            android:title="我" />
+        <item
+            android:id="@+id/nav_collection"
+            android:icon="@mipmap/ic_menu_collection"
+            android:title="我的收藏" />
+        <item
+            android:id="@+id/nav_album"
+            android:icon="@mipmap/ic_menu_album"
+            android:title="我的相册" />
+        <item
+            android:id="@+id/nav_file"
+            android:icon="@mipmap/ic_menu_file"
+            android:title="我的文件" />
+    </group>
+    <group
+        android:checkableBehavior="none"
+        android:id="@+id/group_settings">
+        <item android:id="@+id/nav_theme"
+            android:title="主题风格"/>
+        <item android:id="@+id/nav_night"
+            android:title="夜间模式"/>
+        <item android:id="@+id/nav_setting"
+            android:title="设置"/>
+        <item android:id="@+id/nav_suggestion"
+            android:title="意见反馈"/>
+        <item android:id="@+id/nav_about"
+            android:title="关于"/>
+    </group>
+
+</menu>
