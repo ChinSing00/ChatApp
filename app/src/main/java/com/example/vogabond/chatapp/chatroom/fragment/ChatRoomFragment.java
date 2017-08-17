@@ -42,15 +42,13 @@ public class ChatRoomFragment extends ChatRoomTabFragment implements ViewPager.O
         super.onCreate(savedInstanceState);
     }
 
-
     @Override
     protected void onInit() {
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.chat_room_fragment,container,false);
+        return inflater.inflate(R.layout.chat_room_fragment, container, false);
     }
 
     @Override
@@ -62,13 +60,12 @@ public class ChatRoomFragment extends ChatRoomTabFragment implements ViewPager.O
         setupTabs();
     }
 
-
     public void updateOnlineStatus(boolean isOnline) {
         statusText.setVisibility(isOnline ? View.GONE : View.VISIBLE);
     }
 
     public void updateView() {
-        ChatRoomHelper.setCoveImage(((ChatRoomActivity) getActivity()).getRoomInfo().getRoomId(),imageView,true);
+        ChatRoomHelper.setCoveImage(((ChatRoomActivity) getActivity()).getRoomInfo().getRoomId(), imageView, true);
     }
 
     @Override
@@ -85,51 +82,51 @@ public class ChatRoomFragment extends ChatRoomTabFragment implements ViewPager.O
 
         backImage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 NIMClient.getService(ChatRoomService.class).exitChatRoom(((ChatRoomActivity) getActivity()).getRoomInfo().getRoomId());
                 ((ChatRoomActivity) getActivity()).clearChatRoom();
             }
         });
-        //是否演示弹幕控件
-        if (SHOW_BARRAGE){
+
+        // 是否演示弹幕控件
+        if (SHOW_BARRAGE) {
             ViewStub barrageViewStub = findView(R.id.barrage_view_stub);
             barrageViewStub.inflate();
 
             View barrageViewRoot = findView(R.id.barrage_view_after_inflate);
-            final BarrageSurfaceView barrageView =(BarrageSurfaceView) barrageViewRoot.findViewById(R.id.barrage_view);
+            final BarrageSurfaceView barrageView = (BarrageSurfaceView) barrageViewRoot.findViewById(R.id.barrage_view);
 
             final String barrageText1 = "欢迎进入直播间";
             final String barrageText2 = "Welcome to live room";
-            Handlers.sharedHandler(getActivity()).postDelayed(new Runnable(){
+            Handlers.sharedHandler(getActivity()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     BarrageConfig config = new BarrageConfig();
                     config.setDuration(4500);
-                    //初始化弹幕控件
+                    // 初始化弹幕控件
                     barrageView.init(config);
-                    for (int i = 0; i <=200 ; i++) {
+                    for (int i = 1; i <= 200; i++) {
                         barrageView.addTextBarrage((i % 2 == 0 ? barrageText1 : barrageText2) + i);
                     }
                 }
-            },1000);
-
+            }, 1000);
         }
     }
 
     private void setupPager() {
-        //CACHE COUNT
+        // CACHE COUNT
         adapter = new ChatRoomTabPagerAdapter(getFragmentManager(), getActivity(), viewPager);
         viewPager.setOffscreenPageLimit(adapter.getCacheCount());
-        //page swtich animation
+        // page swtich animation
         viewPager.setPageTransformer(true, new FadeInOutPageTransformer());
-        //ADAPTER
+        // ADAPTER
         viewPager.setAdapter(adapter);
-        //TAKE OVER CHANGE
+        // TAKE OVER CHANGE
         viewPager.setOnPageChangeListener(this);
     }
 
     private void setupTabs() {
-        tabs.setOnCustomTabListener(new PagerSlidingTabStrip.OnCustomTabListener(){
+        tabs.setOnCustomTabListener(new PagerSlidingTabStrip.OnCustomTabListener() {
             @Override
             public int getTabLayoutResId(int position) {
                 return R.layout.chat_room_tab_layout;
@@ -144,17 +141,22 @@ public class ChatRoomFragment extends ChatRoomTabFragment implements ViewPager.O
         tabs.setOnTabClickListener(adapter);
         tabs.setOnTabDoubleTapListener(adapter);
     }
+
+    /********************
+     * OnPageChangeListener
+     **************************/
+
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        //TO TABS
-        tabs.onPageScrolled(position,positionOffset,positionOffsetPixels);
-        //TO ADAPTER
+        // TO TABS
+        tabs.onPageScrolled(position, positionOffset, positionOffsetPixels);
+        // TO ADAPTER
         adapter.onPageScrolled(position);
     }
 
     @Override
     public void onPageSelected(int position) {
-        //TO TABS
+        // TO TABS
         tabs.onPageSelected(position);
 
         selectPage(position);
@@ -162,15 +164,18 @@ public class ChatRoomFragment extends ChatRoomTabFragment implements ViewPager.O
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        //TO TABS
+        // TO TABS
         tabs.onPageScrollStateChanged(state);
+
         scrollState = state;
+
         selectPage(viewPager.getCurrentItem());
     }
-    private void selectPage(int position) {
-        //TO PAGE
-        if (scrollState == ViewPager.SCROLL_STATE_IDLE){
-            adapter.onPageScrolled(viewPager.getCurrentItem());
+
+    private void selectPage(int page) {
+        // TO PAGE
+        if (scrollState == ViewPager.SCROLL_STATE_IDLE) {
+            adapter.onPageSelected(viewPager.getCurrentItem());
         }
     }
 }

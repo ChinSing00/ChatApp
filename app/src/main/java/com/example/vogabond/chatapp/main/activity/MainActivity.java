@@ -51,9 +51,10 @@ public class MainActivity extends UI implements RadioGroup.OnCheckedChangeListen
     }
 
     private void getFragPageData() {
-        dataList.add(new RecentContactsFragment());
-        dataList.add(new ContactsFragment());
-        dataList.add(new ChatRoomFragment());
+        dataList.add(0,new RecentContactsFragment());
+        dataList.add(1,new ContactsFragment());
+        //dataList.add(2,new SessionListFragment());
+        dataList.add(2,new ChatRoomFragment());
     }
 
     public void getView() {
@@ -62,7 +63,6 @@ public class MainActivity extends UI implements RadioGroup.OnCheckedChangeListen
         Radio_Group.setOnCheckedChangeListener(this);
         view_pager.setOnPageChangeListener(this);
         FragmentManager fm = getSupportFragmentManager();
-
         getFragPageData();
         FragmentPagerAdapter fp  = new FragmentPageAdapter(fm,dataList);
         view_pager.setAdapter(fp);
