@@ -41,8 +41,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <!-- 音视频 -->
         <activity
             android:name="avchat.activity.AVChatActivity"
@@ -65,16 +63,24 @@
             android:theme="@style/LoginTheme"
             android:label="@string/register"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".activity.AboutActivity"/>
+        <activity android:name=".main.activity.TeamListActivity"/>
+        <activity android:name=".main.activity.SettingsActivity"/>
+        <activity android:name=".main.activity.SystemMessageActivity"/>
+        <activity android:name=".main.activity.RobotListActivity"/>
         <activity android:name=".main.activity.MainActivity"></activity>
         <activity android:name=".contact.activity.AddFriendActivity"/>
         <activity android:name=".contact.activity.UserProfileActivity"/>
+        <activity android:name=".contact.activity.BlackListActivity"/>
         <activity android:name=".contact.activity.RobotProfileActivity"/>
         <activity android:name=".contact.activity.UserProfileSettingActivity"/>
-        <activity android:name=".main.activity.TeamListActivity"/>
-        <activity android:name=".team.AdvancedTeamJoinActivity"/>
         <activity android:name=".session.activity.MSG_InfoActivity"/>
         <activity android:name=".session.activity.MSG_HistoryAcitivity"/>
-        <activity android:name=".avchat.activity.AVChatActivity"/>
+        <activity android:name=".session.search.DisplayMessageActivity"/>
+        <activity android:name=".session.search.SearchMessageActivity"/>
+        <activity android:name=".team.AdvancedTeamSearchActivity"/>
+        <activity android:name=".team.AdvancedTeamJoinActivity"/>
+
         <meta-data
             android:name="com.netease.nim.appKey"
             android:value="45c6af3c98409b18a84451215d0bdd6e" />

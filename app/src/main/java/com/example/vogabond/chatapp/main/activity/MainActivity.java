@@ -19,10 +19,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
+import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.activity.AboutActivity;
+import com.example.vogabond.chatapp.contact.activity.UserProfileActivity;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.contact.ContactsFragment;
 import com.netease.nim.uikit.recent.RecentContactsFragment;
@@ -36,6 +39,8 @@ public class MainActivity extends UI {
     private NavigationView navigationView;
     private Toolbar toolbar;
     private RadioGroup RG;
+    private ImageView headImg;
+    private FragmentManager fragmentManager = getSupportFragmentManager();
     private Fragment[] mFragments;
     private int mIndex;
 
@@ -56,7 +61,6 @@ public class MainActivity extends UI {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two);
-
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //透明导航栏
@@ -68,10 +72,6 @@ public class MainActivity extends UI {
         initFragment();
     }
 
-//    private void getFragPageData() {
-//        dataList.add(0,new RecentContactsFragment());
-//        dataList.add(1,new ContactsFragment());
-//    }
     private void initView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -126,6 +126,7 @@ public class MainActivity extends UI {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_me:
+                        UserProfileActivity.start(MainActivity.this, MyCache.getAccount());
                         break;
                     case R.id.nav_collection:
                         break;
@@ -190,8 +191,7 @@ public class MainActivity extends UI {
         ContactsFragment contactsFragment = new ContactsFragment();
         RecentContactsFragment recentContactsFragment=new RecentContactsFragment();
         mFragments = new Fragment[]{recentContactsFragment, contactsFragment };
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.add(R.id.frame_content, recentContactsFragment).commit();
         setIndexSelected(0);
     }
@@ -200,17 +200,17 @@ public class MainActivity extends UI {
         if (mIndex == i) {
             return;
         }
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
+
+        FragmentTransaction ftt = fragmentManager.beginTransaction();
         //隐藏
-        ft.hide(mFragments[mIndex]);
+        ftt.hide(mFragments[mIndex]);
         //判断是否添加
         if (!mFragments[i].isAdded()) {
-            ft.add(R.id.frame_content, mFragments[i]).show(mFragments[i]);
+            ftt.add(R.id.frame_content, mFragments[i]).show(mFragments[i]);
         } else {
-            ft.show(mFragments[i]);
+            ftt.show(mFragments[i]);
         }
-        ft.commit();
+        ftt.commit();
         //再次赋值
         mIndex = i;
 

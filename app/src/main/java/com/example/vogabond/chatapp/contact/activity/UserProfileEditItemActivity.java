@@ -78,7 +78,7 @@ public class UserProfileEditItemActivity extends UI implements View.OnClickListe
         intent.setClass(context, UserProfileEditItemActivity.class);
         intent.putExtra(EXTRA_KEY, key);
         intent.putExtra(EXTRA_DATA, data);
-        ((Activity) context).startActivityForResult(intent, REQUEST_CODE);
+        ((Activity)context).startActivityForResult(intent, REQUEST_CODE);
     }
 
     @Override
