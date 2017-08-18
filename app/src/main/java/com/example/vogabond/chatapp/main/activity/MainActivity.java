@@ -14,6 +14,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -57,6 +59,7 @@ public class MainActivity extends UI {
         }
         context.startActivity(intent);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +73,19 @@ public class MainActivity extends UI {
         initNavigationView();
         initRadioGroup();
         initFragment();
+        //头部点击事件
+        initheadView();
+    }
+
+    private void initheadView() {
+        View headView = navigationView.inflateHeaderView(R.layout.menu_layout);
+        ImageView mHeadPic = (ImageView) headView.findViewById(R.id.imageView);
+        mHeadPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("Log:","头部被点击了！");
+            }
+        });
     }
 
     private void initView() {
@@ -150,8 +166,8 @@ public class MainActivity extends UI {
                     case R.id.nav_suggestion:
                         break;
                     case R.id.nav_about:
-                        intent=new Intent();
-                        intent.setClass(getApplicationContext(),AboutActivity.class);
+                        intent = new Intent();
+                        intent.setClass(getApplicationContext(), AboutActivity.class);
                         startActivity(intent);
                         break;
                 }
@@ -189,8 +205,8 @@ public class MainActivity extends UI {
 
     private void initFragment() {
         ContactsFragment contactsFragment = new ContactsFragment();
-        RecentContactsFragment recentContactsFragment=new RecentContactsFragment();
-        mFragments = new Fragment[]{recentContactsFragment, contactsFragment };
+        RecentContactsFragment recentContactsFragment = new RecentContactsFragment();
+        mFragments = new Fragment[]{recentContactsFragment, contactsFragment};
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.add(R.id.frame_content, recentContactsFragment).commit();
         setIndexSelected(0);
