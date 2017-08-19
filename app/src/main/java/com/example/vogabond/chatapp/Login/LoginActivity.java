@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.activity.UI;
+import com.example.vogabond.chatapp.main.activity.MainActivity;
 import com.example.vogabond.chatapp.preference.Preferences;
 import com.example.vogabond.chatapp.preference.UserPreferences;
 import com.netease.nim.uikit.NimUIKit;
