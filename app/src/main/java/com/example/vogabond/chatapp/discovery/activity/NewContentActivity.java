@@ -1,4 +1,4 @@
-package com.example.vogabond.chatapp.discovery;
+package com.example.vogabond.chatapp.discovery.activity;
 
 import com.example.vogabond.chatapp.activity.UI;
 
