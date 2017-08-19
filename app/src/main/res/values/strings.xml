@@ -38,10 +38,11 @@
     <string name="friends_buttom">联系人</string>
     <string name="find_buttom">发现</string>
     <!-- 关于 -->
+
     <string name="about_tv">XXX小组制作</string>
     <string name="about_edition">xx安卓版1.0</string>
     <string name="about_statement">仅供学习交流，严禁用于商业用途!</string>
-
+    <string name="feedback">意见反馈</string>
 
     <string name="readed">已读</string>
     <string name="about">关于</string>
