@@ -21,6 +21,7 @@
     <permission
         android:name="com.example.vogabond.chatapp.permission.RECEIVE_MSG"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="com.example.vogabond.chatapp.permission.RECEIVE_MSG" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -80,7 +81,6 @@
         <activity android:name=".main.activity.SettingsActivity" />
         <activity android:name=".main.activity.SystemMessageActivity" />
         <activity android:name=".main.activity.RobotListActivity" />
-        <activity android:name=".main.activity.MainActivity"></activity>
         <activity android:name=".contact.activity.AddFriendActivity" />
         <activity android:name=".contact.activity.UserProfileActivity" />
         <activity android:name=".contact.activity.BlackListActivity" />
@@ -101,11 +101,9 @@
         <service
             android:name="com.netease.nimlib.service.NimService"
             android:process=":core" />
-
         <service
             android:name="com.netease.nimlib.service.NimService$Aux"
             android:process=":core" />
-
         <service
             android:name="com.netease.nimlib.job.NIMJobService"
             android:exported="true"
@@ -121,19 +119,17 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-
         <receiver android:name="com.netease.nimlib.service.ResponseReceiver" />
 
         <service android:name="com.netease.nimlib.service.ResponseService" />
-
         <service
             android:name="com.netease.cosine.core.CosineService"
-            android:process=":cosine"></service>
+            android:process=":cosine" />
 
         <receiver
             android:name="com.netease.cosine.target.CosineReceiver"
             android:exported="true"
-            android:process=":cosine"></receiver>
+            android:process=":cosine" />
 
         <meta-data
             android:name="com.netease.cosine.target"
@@ -141,6 +137,8 @@
         <meta-data
             android:name="com.netease.cosine.target.receiver"
             android:value="com.netease.nimlib.service.NimReceiver" />
+
+        <activity android:name=".activity.FeedbackActivity"></activity>
     </application>
 
 </manifest>

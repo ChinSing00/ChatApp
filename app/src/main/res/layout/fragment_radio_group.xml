@@ -79,12 +79,11 @@
         <!--android:textColor="@color/color_main" />-->
     </RadioGroup>
 
-    <!--<com.zpark.wechat.MyViewPager-->
-    <!--android:id="@+id/view_pager"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_below="@id/toolbar"-->
-    <!--android:layout_above="@+id/Radio_Group_Main"/>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/frame_content"
+        android:background="#000000" />
     <FrameLayout
         android:id="@+id/frame_content"
         android:layout_width="match_parent"
