@@ -92,6 +92,7 @@
         <activity android:name=".session.search.SearchMessageActivity" />
         <activity android:name=".team.AdvancedTeamSearchActivity" />
         <activity android:name=".team.AdvancedTeamJoinActivity" />
+        <activity android:name=".main.activity.NoDisturbActivity" />
 
         <meta-data
             android:name="com.netease.nim.appKey"

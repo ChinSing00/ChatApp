@@ -1,5 +1,6 @@
 package com.example.vogabond.chatapp.main.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,7 +16,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,14 +23,28 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.example.vogabond.chatapp.Login.LoginActivity;
+import com.example.vogabond.chatapp.Login.LogoutHelper;
 import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.activity.AboutActivity;
+import com.example.vogabond.chatapp.chatroom.fragment.ChatRoomFragment;
+import com.example.vogabond.chatapp.chatroom.helper.ChatRoomHelper;
+import com.example.vogabond.chatapp.contact.activity.AddFriendActivity;
 import com.example.vogabond.chatapp.contact.activity.UserProfileActivity;
+import com.example.vogabond.chatapp.team.AdvancedTeamSearchActivity;
+import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.contact.ContactsFragment;
+import com.netease.nim.uikit.contact_selector.activity.ContactSelectActivity;
+import com.netease.nim.uikit.permission.MPermission;
+import com.netease.nim.uikit.permission.annotation.OnMPermissionDenied;
+import com.netease.nim.uikit.permission.annotation.OnMPermissionGranted;
+import com.netease.nim.uikit.permission.annotation.OnMPermissionNeverAskAgain;
 import com.netease.nim.uikit.recent.RecentContactsFragment;
+import com.netease.nim.uikit.team.helper.TeamHelper;
 
 /**
  * Created by Selet on 2017/8/4 0004.
@@ -68,7 +82,8 @@ public class MainActivity extends UI {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //透明导航栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-
+        requestBasicPermission();
+        ChatRoomHelper.init();
         initView();
         initNavigationView();
         initRadioGroup();
@@ -135,6 +150,41 @@ public class MainActivity extends UI {
 
     }
 
+    private final String[] BASIC_PERMISSIONS = new String[]{
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
+
+    private void requestBasicPermission() {
+        MPermission.printMPermissionResult(true, this, BASIC_PERMISSIONS);
+        MPermission.with(MainActivity.this)
+                .setRequestCode(100)
+                .permissions(BASIC_PERMISSIONS)
+                .request();
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        MPermission.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+    }
+
+    @OnMPermissionGranted(100)
+    public void onBasicPermissionSuccess() {
+        Toast.makeText(this, "授权成功", Toast.LENGTH_SHORT).show();
+        MPermission.printMPermissionResult(false, this, BASIC_PERMISSIONS);
+    }
+
+    @OnMPermissionDenied(100)
+    @OnMPermissionNeverAskAgain(100)
+    public void onBasicPermissionFailed() {
+        Toast.makeText(this, "未全部授权，部分功能可能无法正常运行！", Toast.LENGTH_SHORT).show();
+        MPermission.printMPermissionResult(false, this, BASIC_PERMISSIONS);
+    }
+
     private void initNavigationView() {
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -162,13 +212,12 @@ public class MainActivity extends UI {
                     case R.id.nav_night:
                         break;
                     case R.id.nav_setting:
+                        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                         break;
                     case R.id.nav_suggestion:
                         break;
                     case R.id.nav_about:
-                        intent = new Intent();
-                        intent.setClass(getApplicationContext(), AboutActivity.class);
-                        startActivity(intent);
+                        AboutActivity.start(MainActivity.this);
                         break;
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -188,25 +237,20 @@ public class MainActivity extends UI {
                         break;
                     case R.id.friends_buttom:
                         setIndexSelected(1);
-                        ;
                         break;
                     case R.id.find_buttom:
-//                        setIndexSelected(2);
+                        setIndexSelected(2);
                         break;
-//                    case R.id.we_buttom:
-//                        myViewPager.setCurrentItem(3);
-//                        break;
-                    default:
-                        break;
-                }
+                 }
             }
         });
     }
 
     private void initFragment() {
         ContactsFragment contactsFragment = new ContactsFragment();
+        ChatRoomFragment cff = new ChatRoomFragment();
         RecentContactsFragment recentContactsFragment = new RecentContactsFragment();
-        mFragments = new Fragment[]{recentContactsFragment, contactsFragment};
+        mFragments = new Fragment[]{recentContactsFragment, contactsFragment,cff};
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.add(R.id.frame_content, recentContactsFragment).commit();
         setIndexSelected(0);
@@ -240,4 +284,42 @@ public class MainActivity extends UI {
         super.onCreateOptionsMenu(menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about:
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                break;
+            case R.id.create_normal_team:
+                ContactSelectActivity.Option option = TeamHelper.getCreateContactSelectOption(null, 50);
+                NimUIKit.startContactSelect(MainActivity.this, option, 1);
+                break;
+            case R.id.create_regular_team:
+                ContactSelectActivity.Option advancedOption = TeamHelper.getCreateContactSelectOption(null, 50);
+                NimUIKit.startContactSelect(MainActivity.this, advancedOption, 2);
+                break;
+            case R.id.search_advanced_team:
+                AdvancedTeamSearchActivity.start(MainActivity.this);
+                break;
+            case R.id.add_buddy:
+                AddFriendActivity.start(MainActivity.this);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public static void logout(Context context, boolean quit) {
+        Intent extra = new Intent();
+        extra.putExtra("qiut", quit);
+        start(context, extra);
+        LogoutHelper.logout();
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.putExtra("KICK_OUT", quit);
+        context.startActivity(intent);
+
+    }
+
 }

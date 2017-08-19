@@ -10,9 +10,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.main.bean.SettingTemplate;
-import com.example.vogabond.chatapp.main.bean.SettingType;
+import com.example.vogabond.chatapp.main.model.SettingTemplate;
+import com.example.vogabond.chatapp.main.model.SettingType;
+import com.netease.nim.uikit.cache.NimUserInfoCache;
 import com.netease.nim.uikit.common.ui.imageview.HeadImageView;
 import com.netease.nim.uikit.common.ui.widget.SwitchButton;
 
@@ -137,23 +139,23 @@ public class SettingsAdapter extends BaseAdapter {
      * 设置头像和名字item
      * @param viewHolder
      */
-//    private void updateHeadItem(ViewHolder viewHolder) {
-//        ViewGroup.LayoutParams lp = viewHolder.root.getLayoutParams();
-//        if(lp != null) {
-//            lp.height = 200;
-//            viewHolder.root.setLayoutParams(lp);
-//            viewHolder.root.setBackgroundColor(Color.TRANSPARENT);
-//        }
-//        viewHolder.headImageView.setVisibility(View.VISIBLE);
-//        viewHolder.headTitleView.setVisibility(View.VISIBLE);
-//        viewHolder.headTitleView.setText(NimUserInfoCache.getInstance().getUserDisplayName(MyCache.getAccount()));
-//        viewHolder.headDetailView.setVisibility(View.VISIBLE);
-//        viewHolder.headDetailView.setText(String.format("帐号:%s", MyCache.getAccount()));
-//        viewHolder.titleView.setVisibility(View.GONE);
-//        viewHolder.headImageView.loadBuddyAvatar(MyCache.getAccount());
-//        viewHolder.indicator.setImageResource(R.drawable.nim_arrow_right);
-//        viewHolder.indicator.setVisibility(View.VISIBLE);
-//    }
+    private void updateHeadItem(ViewHolder viewHolder) {
+        ViewGroup.LayoutParams lp = viewHolder.root.getLayoutParams();
+        if(lp != null) {
+            lp.height = 200;
+            viewHolder.root.setLayoutParams(lp);
+            viewHolder.root.setBackgroundColor(Color.TRANSPARENT);
+        }
+        viewHolder.headImageView.setVisibility(View.VISIBLE);
+        viewHolder.headTitleView.setVisibility(View.VISIBLE);
+        viewHolder.headTitleView.setText(NimUserInfoCache.getInstance().getUserDisplayName(MyCache.getAccount()));
+        viewHolder.headDetailView.setVisibility(View.VISIBLE);
+        viewHolder.headDetailView.setText(String.format("帐号:%s", MyCache.getAccount()));
+        viewHolder.titleView.setVisibility(View.GONE);
+        viewHolder.headImageView.loadBuddyAvatar(MyCache.getAccount());
+        viewHolder.indicator.setImageResource(R.drawable.nim_arrow_right);
+        viewHolder.indicator.setVisibility(View.VISIBLE);
+    }
 
     /**
      * 设置空的item
