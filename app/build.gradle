@@ -18,7 +18,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             //设置支持的SO库架构
-            abiFilters "armeabi-v7a", "x86","arm64-v8a","x86_64"
+            abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
     buildTypes {
@@ -30,24 +30,25 @@ android {
 
 }
 
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.android.support:design:25.0.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
     compile fileTree(include: '*.jar', dir: 'libs')
     // 添加依赖。注意，版本号必须一致。
     // 基础功能 (必需)
     //compile 'com.netease.nimlib:basesdk:4.0.0'
     // 音视频需要
-    compile 'com.netease.nimlib:avchat:4.0.0'
     // 聊天室需要
-    compile 'com.netease.nimlib:chatroom:4.0.0'
     // 实时会话服务需要
-    compile 'com.netease.nimlib:rts:4.0.0'
     compile project(':uikit')
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.netease.nimlib:avchat:4.0.0'
+    compile 'com.netease.nimlib:chatroom:4.0.0'
+    compile 'com.netease.nimlib:rts:4.0.0'
+    testCompile 'junit:junit:4.12'
 }

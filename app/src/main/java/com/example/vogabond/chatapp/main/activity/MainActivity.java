@@ -27,6 +27,7 @@ import android.widget.RadioGroup;
 import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.activity.AboutActivity;
+import com.example.vogabond.chatapp.activity.FeedbackActivity;
 import com.example.vogabond.chatapp.contact.activity.UserProfileActivity;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.contact.ContactsFragment;
@@ -41,7 +42,6 @@ public class MainActivity extends UI {
     private NavigationView navigationView;
     private Toolbar toolbar;
     private RadioGroup RG;
-    private ImageView headImg;
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private Fragment[] mFragments;
     private int mIndex;
@@ -143,6 +143,7 @@ public class MainActivity extends UI {
                 switch (item.getItemId()) {
                     case R.id.nav_me:
                         UserProfileActivity.start(MainActivity.this, MyCache.getAccount());
+
                         break;
                     case R.id.nav_collection:
                         break;
@@ -162,8 +163,14 @@ public class MainActivity extends UI {
                     case R.id.nav_night:
                         break;
                     case R.id.nav_setting:
+                        intent = new Intent();
+                        intent.setClass(getApplicationContext(), SettingsActivity.class);
+                        startActivity(intent);
                         break;
-                    case R.id.nav_suggestion:
+                    case R.id.nav_feedback:
+                        intent = new Intent();
+                        intent.setClass(getApplicationContext(), FeedbackActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_about:
                         intent = new Intent();

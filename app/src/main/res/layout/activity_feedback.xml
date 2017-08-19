@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.vogabond.chatapp.activity.FeedbackActivity">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:titleTextAppearance="@style/Toolbar.TitleText"/>
+    </android.support.design.widget.AppBarLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/feedback_editText"
+        android:gravity="top"
+        android:background="@android:drawable/edit_text"
+        android:hint="请输入反馈内容"
+        android:textCursorDrawable="@null"
+        android:layout_below="@+id/app_bar_layout"
+        android:layout_alignParentStart="true" />
+    <Button
+        android:id="@+id/feedback_but"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/feedback_editText"
+        android:layout_alignParentStart="true"
+        android:text="发送"/>
+</RelativeLayout>

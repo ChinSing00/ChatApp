@@ -2,6 +2,7 @@ package com.example.vogabond.chatapp.activity;
 
 import android.os.Bundle;
 
+
 import com.example.vogabond.chatapp.R;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.model.ToolBarOptions;
@@ -16,6 +17,8 @@ public class AboutActivity extends UI {
 
         ToolBarOptions options = new ToolBarOptions();
         setToolBar(R.id.toolbar, options);
+
+
     }
 
 
