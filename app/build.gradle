@@ -51,4 +51,6 @@ dependencies {
     compile 'com.netease.nimlib:chatroom:4.0.0'
     compile 'com.netease.nimlib:rts:4.0.0'
     testCompile 'junit:junit:4.12'
+    compile 'javax.annotation:javax.annotation-api:1.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
