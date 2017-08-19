@@ -81,7 +81,6 @@
         <activity android:name=".main.activity.SettingsActivity" />
         <activity android:name=".main.activity.SystemMessageActivity" />
         <activity android:name=".main.activity.RobotListActivity" />
-        <activity android:name=".main.activity.MainActivity" />
         <activity android:name=".contact.activity.AddFriendActivity" />
         <activity android:name=".contact.activity.UserProfileActivity" />
         <activity android:name=".contact.activity.BlackListActivity" />
@@ -93,6 +92,7 @@
         <activity android:name=".session.search.SearchMessageActivity" />
         <activity android:name=".team.AdvancedTeamSearchActivity" />
         <activity android:name=".team.AdvancedTeamJoinActivity" />
+        <activity android:name=".main.activity.NoDisturbActivity" />
 
         <meta-data
             android:name="com.netease.nim.appKey"

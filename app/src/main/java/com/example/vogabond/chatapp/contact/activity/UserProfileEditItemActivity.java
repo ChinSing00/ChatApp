@@ -96,6 +96,7 @@ public class UserProfileEditItemActivity extends UI implements View.OnClickListe
             setContentView(R.layout.user_profile_birth_layout);
             findBirthViews();
         }
+
         ToolBarOptions options = new ToolBarOptions();
         setToolBar(R.id.toolbar, options);
         initActionbar();

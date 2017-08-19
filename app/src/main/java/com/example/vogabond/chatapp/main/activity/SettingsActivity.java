@@ -1,5 +1,7 @@
 package com.example.vogabond.chatapp.main.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,16 +12,21 @@ import android.widget.Toast;
 
 import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
+import com.example.vogabond.chatapp.activity.AboutActivity;
+import com.example.vogabond.chatapp.avchat.activity.AVChatSettingsActivity;
 import com.example.vogabond.chatapp.contact.activity.UserProfileSettingActivity;
 import com.example.vogabond.chatapp.main.adapter.SettingsAdapter;
-import com.example.vogabond.chatapp.main.bean.SettingTemplate;
-import com.example.vogabond.chatapp.main.bean.SettingType;
+import com.example.vogabond.chatapp.main.model.SettingTemplate;
+import com.example.vogabond.chatapp.main.model.SettingType;
 import com.example.vogabond.chatapp.preference.Preferences;
 import com.example.vogabond.chatapp.preference.UserPreferences;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.model.ToolBarOptions;
+import com.netease.nim.uikit.session.audio.MessageAudioControl;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.Observer;
+import com.netease.nimlib.sdk.RequestCallback;
+import com.netease.nimlib.sdk.StatusBarNotificationConfig;
 import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.avchat.AVChatNetDetectCallback;
 import com.netease.nimlib.sdk.avchat.AVChatNetDetector;
@@ -34,7 +41,7 @@ import java.util.List;
 /**
  * Created by hzxuwen on 2015/6/26.
  */
-public class SettingsActivity extends UI   {
+public class SettingsActivity extends UI implements SettingsAdapter.SwitchChangeListener  {
     private static final int TAG_HEAD = 1;
     private static final int TAG_NOTICE = 2;
     private static final int TAG_NO_DISTURBE = 3;
@@ -80,13 +87,12 @@ public class SettingsActivity extends UI   {
     @Override
     protected void onResume() {
         super.onResume();
-        // android2.3以下版本 布局混乱的问题
         if (Build.VERSION.SDK_INT <= 10) {
             adapter = null;
             initAdapter();
             adapter.notifyDataSetChanged();
         } else {
-            adapter.notifyDataSetChanged();
+          //  adapter.notifyDataSetChanged();
         }
     }
 
@@ -159,8 +165,8 @@ public class SettingsActivity extends UI   {
         items.add(SettingTemplate.addLine());
         items.add(new SettingTemplate(TAG_NOTICE_CONTENT, getString(R.string.notice_content), SettingType.TYPE_TOGGLE,
                 UserPreferences.getNoticeContentToggle()));
-//        items.add(new SettingTemplate(TAG_NOTIFICATION_STYLE, getString(R.string.notification_folded), SettingType.TYPE_TOGGLE,
-//                UserPreferences.getNotificationFoldedToggle()));
+        items.add(new SettingTemplate(TAG_NOTIFICATION_STYLE, getString(R.string.notification_folded), SettingType.TYPE_TOGGLE,
+                UserPreferences.getNotificationFoldedToggle()));
         items.add(SettingTemplate.addLine());
         disturbItem = new SettingTemplate(TAG_NO_DISTURBE, getString(R.string.no_disturb), noDisturbTime);
         items.add(disturbItem);
@@ -211,13 +217,13 @@ public class SettingsActivity extends UI   {
                 UserProfileSettingActivity.start(this, MyCache.getAccount());
                 break;
             case TAG_NO_DISTURBE:
-               // startNoDisturb();
+                startNoDisturb();
                 break;
             case TAG_CUSTOM_NOTIFY:
                 //CustomNotificationActivity.start(SettingsActivity.this);
                 break;
             case TAG_ABOUT:
-//                startActivity(new Intent(SettingsActivity.this, AboutActivity.class));
+                startActivity(new Intent(SettingsActivity.this, AboutActivity.class));
                 break;
             case TAG_CLEAR:
                 NIMClient.getService(MsgService.class).clearMsgDatabase(true);
@@ -226,15 +232,13 @@ public class SettingsActivity extends UI   {
             case TAG_CLEAR_INDEX:
                 clearIndex();
                 break;
-//            case TAG_NRTC_SETTINGS:
-//                startActivity(new Intent(SettingsActivity.this, AVChatSettingsActivity.class));
-//                break;
+            case TAG_NRTC_SETTINGS:
+                startActivity(new Intent(SettingsActivity.this, AVChatSettingsActivity.class));
+                break;
             case TAG_NRTC_NET_DETECT:
                 netDetectForNrtc();
                 break;
-//            case TAG_JS_BRIDGE:
-//                startActivity(new Intent(SettingsActivity.this, JsBridgeActivity.class));
-//                break;
+//
             default:
                 break;
         }
@@ -264,7 +268,7 @@ public class SettingsActivity extends UI   {
      */
     private void logout() {
         removeLoginState();
-        //MainActivity.logout(SettingsActivity.this, false);
+        MainActivity.logout(SettingsActivity.this, false);
 
         finish();
         NIMClient.getService(AuthService.class).logout();
@@ -277,181 +281,147 @@ public class SettingsActivity extends UI   {
         Preferences.saveUserToken("");
     }
 
-//    @Override
-//    public void onSwitchChange(SettingTemplate item, boolean checkState) {
-//        switch (item.getId()) {
-//            case TAG_NOTICE:
-//                setMessageNotify(checkState);
-//                break;
-//            case TAG_SPEAKER:
-//                com.netease.nim.uikit.UserPreferences.setEarPhoneModeEnable(checkState);
-//                MessageAudioControl.getInstance(SettingsActivity.this).setEarPhoneModeEnable(checkState);
-//                break;
-//            case TAG_MSG_IGNORE:
-//                UserPreferences.setMsgIgnore(checkState);
-//                break;
-//            case TAG_RING:
-//                UserPreferences.setRingToggle(checkState);
-//                StatusBarNotificationConfig config = UserPreferences.getStatusConfig();
-//                config.ring = checkState;
-//                UserPreferences.setStatusConfig(config);
-//                NIMClient.updateStatusBarNotificationConfig(config);
-//                break;
-//            case TAG_LED:
-//                UserPreferences.setLedToggle(checkState);
-//                StatusBarNotificationConfig config1 = UserPreferences.getStatusConfig();
-//                StatusBarNotificationConfig demoConfig = MyCache.getNotificationConfig();
-//                if (checkState && demoConfig != null) {
-//                    config1.ledARGB = demoConfig.ledARGB;
-//                    config1.ledOnMs = demoConfig.ledOnMs;
-//                    config1.ledOffMs = demoConfig.ledOffMs;
-//                } else {
-//                    config1.ledARGB = -1;
-//                    config1.ledOnMs = -1;
-//                    config1.ledOffMs = -1;
-//                }
-//                UserPreferences.setStatusConfig(config1);
-//                NIMClient.updateStatusBarNotificationConfig(config1);
-//                break;
-//            case TAG_NOTICE_CONTENT:
-//                UserPreferences.setNoticeContentToggle(checkState);
-//                StatusBarNotificationConfig config2 = UserPreferences.getStatusConfig();
-//                config2.titleOnlyShowAppName = checkState;
-//                UserPreferences.setStatusConfig(config2);
-//                NIMClient.updateStatusBarNotificationConfig(config2);
-//                break;
-//            case TAG_MULTIPORT_PUSH:
-//                updateMultiportPushConfig(!checkState);
-//                break;
-//            case TAG_NOTIFICATION_STYLE:
-//                UserPreferences.setNotificationFoldedToggle(checkState);
-//                config = UserPreferences.getStatusConfig();
-//                config.notificationFolded = checkState;
-//                UserPreferences.setStatusConfig(config);
-//                NIMClient.updateStatusBarNotificationConfig(config);
-//            default:
-//                break;
-//        }
-//        item.setChecked(checkState);
-//    }
+    @Override
+    public void onSwitchChange(SettingTemplate item, boolean checkState) {
+        switch (item.getId()) {
+            case TAG_NOTICE:
+                break;
+            case TAG_SPEAKER:
+                com.netease.nim.uikit.UserPreferences.setEarPhoneModeEnable(checkState);
+                MessageAudioControl.getInstance(SettingsActivity.this).setEarPhoneModeEnable(checkState);
+                break;
+            case TAG_MSG_IGNORE:
+                UserPreferences.setMsgIgnore(checkState);
+                break;
+            case TAG_RING:
+                UserPreferences.setRingToggle(checkState);
+                StatusBarNotificationConfig config = UserPreferences.getStatusConfig();
+                config.ring = checkState;
+                UserPreferences.setStatusConfig(config);
+                NIMClient.updateStatusBarNotificationConfig(config);
+                break;
+            case TAG_LED:
+                UserPreferences.setLedToggle(checkState);
+                StatusBarNotificationConfig config1 = UserPreferences.getStatusConfig();
+                StatusBarNotificationConfig demoConfig = MyCache.getNotificationConfig();
+                if (checkState && demoConfig != null) {
+                    config1.ledARGB = demoConfig.ledARGB;
+                    config1.ledOnMs = demoConfig.ledOnMs;
+                    config1.ledOffMs = demoConfig.ledOffMs;
+                } else {
+                    config1.ledARGB = -1;
+                    config1.ledOnMs = -1;
+                    config1.ledOffMs = -1;
+                }
+                UserPreferences.setStatusConfig(config1);
+                NIMClient.updateStatusBarNotificationConfig(config1);
+                break;
+            case TAG_NOTICE_CONTENT:
+                UserPreferences.setNoticeContentToggle(checkState);
+                StatusBarNotificationConfig config2 = UserPreferences.getStatusConfig();
+                config2.titleOnlyShowAppName = checkState;
+                UserPreferences.setStatusConfig(config2);
+                NIMClient.updateStatusBarNotificationConfig(config2);
+                break;
+            case TAG_MULTIPORT_PUSH:
+                updateMultiportPushConfig(!checkState);
+                break;
+            case TAG_NOTIFICATION_STYLE:
+                UserPreferences.setNotificationFoldedToggle(checkState);
+                config = UserPreferences.getStatusConfig();
+                config.notificationFolded = checkState;
+                UserPreferences.setStatusConfig(config);
+                NIMClient.updateStatusBarNotificationConfig(config);
+            default:
+                break;
+        }
+        item.setChecked(checkState);
+    }
 
-//    private void setMessageNotify(final boolean checkState) {
-//        // 如果接入第三方推送（小米），则同样应该设置开、关推送提醒
-//        // 如果关闭消息提醒，则第三方推送消息提醒也应该关闭。
-//        // 如果打开消息提醒，则同时打开第三方推送消息提醒。
-//        NIMClient.getService(MixPushService.class).enable(checkState).setCallback(new RequestCallback<Void>() {
-//            @Override
-//            public void onSuccess(Void param) {
-//                Toast.makeText(SettingsActivity.this, R.string.user_info_update_success, Toast.LENGTH_SHORT).show();
-//                notificationItem.setChecked(checkState);
-//                setToggleNotification(checkState);
-//            }
-//            @Override
-//            public void onFailed(int code) {
-//                notificationItem.setChecked(!checkState);
-//                // 这种情况是客户端不支持第三方推送
-//                if (code == ResponseCode.RES_UNSUPPORT) {
-//                    notificationItem.setChecked(checkState);
-//                    setToggleNotification(checkState);
-//                } else if (code == ResponseCode.RES_EFREQUENTLY){
-//                    Toast.makeText(SettingsActivity.this, R.string.operation_too_frequent, Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(SettingsActivity.this, R.string.user_info_update_failed, Toast.LENGTH_SHORT).show();
-//                }
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onException(Throwable exception) {
-//
-//            }
-//        });
-//    }
+    private void setToggleNotification(boolean checkState) {
+        try {
+            setNotificationToggle(checkState);
+            NIMClient.toggleNotification(checkState);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-//    private void setToggleNotification(boolean checkState) {
-//        try {
-//            setNotificationToggle(checkState);
-//            NIMClient.toggleNotification(checkState);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private void setNotificationToggle(boolean on) {
-//        UserPreferences.setNotificationToggle(on);
-//    }
+    private void setNotificationToggle(boolean on) {
+        UserPreferences.setNotificationToggle(on);
+    }
 
-//    private void startNoDisturb() {
-//        NoDisturbActivity.startActivityForResult(this, UserPreferences.getStatusConfig(), noDisturbTime, NoDisturbActivity.NO_DISTURB_REQ);
-//    }
-//
+    private void startNoDisturb() {
+        NoDisturbActivity.startActivityForResult(this, UserPreferences.getStatusConfig(), noDisturbTime, NoDisturbActivity.NO_DISTURB_REQ);
+    }
+
     private String getIndexCacheSize() {
         long size = NIMClient.getService(LuceneService.class).getCacheSize();
         return String.format("%.2f", size / (1024.0f * 1024.0f));
     }
-//
+
     private void clearIndex() {
         NIMClient.getService(LuceneService.class).clearCache();
         clearIndexItem.setDetail("0.00 M");
         adapter.notifyDataSetChanged();
     }
 
-//    private void updateMultiportPushConfig(final boolean checkState) {
-//        NIMClient.getService(SettingsService.class).updateMultiportPushConfig(checkState).setCallback(new RequestCallback<Void>() {
-//            @Override
-//            public void onSuccess(Void param) {
-//                Toast.makeText(SettingsActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailed(int code) {
-//                Toast.makeText(SettingsActivity.this, "设置失败,code:" + code, Toast.LENGTH_SHORT).show();
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onException(Throwable exception) {
-//
-//            }
-//        });
-//    }
+    private void updateMultiportPushConfig(final boolean checkState) {
+        NIMClient.getService(SettingsService.class).updateMultiportPushConfig(checkState).setCallback(new RequestCallback<Void>() {
+            @Override
+            public void onSuccess(Void param) {
+                Toast.makeText(SettingsActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
+            }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == Activity.RESULT_OK) {
-//            switch (requestCode) {
-//                case NoDisturbActivity.NO_DISTURB_REQ:
-//                    setNoDisturbTime(data);
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
-//    }
+            @Override
+            public void onFailed(int code) {
+                Toast.makeText(SettingsActivity.this, "设置失败,code:" + code, Toast.LENGTH_SHORT).show();
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onException(Throwable exception) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case NoDisturbActivity.NO_DISTURB_REQ:
+                    setNoDisturbTime(data);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
     /**
      * 设置免打扰时间
      *
      * @param data
      */
-//    private void setNoDisturbTime(Intent data) {
-//        boolean isChecked = data.getBooleanExtra(NoDisturbActivity.EXTRA_ISCHECKED, false);
-//        noDisturbTime = getString(R.string.setting_close);
-//        StatusBarNotificationConfig config = UserPreferences.getStatusConfig();
-//        if (isChecked) {
-//            config.downTimeBegin = data.getStringExtra(NoDisturbActivity.EXTRA_START_TIME);
-//            config.downTimeEnd = data.getStringExtra(NoDisturbActivity.EXTRA_END_TIME);
-//            noDisturbTime = String.format("%s到%s", config.downTimeBegin, config.downTimeEnd);
-//        } else {
-//            config.downTimeBegin = null;
-//            config.downTimeEnd = null;
-//        }
-//        disturbItem.setDetail(noDisturbTime);
-//        adapter.notifyDataSetChanged();
-//        UserPreferences.setDownTimeToggle(isChecked);
-//        config.downTimeToggle = isChecked;
-//        UserPreferences.setStatusConfig(config);
-//        NIMClient.updateStatusBarNotificationConfig(config);
-//    }
+    private void setNoDisturbTime(Intent data) {
+        boolean isChecked = data.getBooleanExtra(NoDisturbActivity.EXTRA_ISCHECKED, false);
+        noDisturbTime = getString(R.string.setting_close);
+        StatusBarNotificationConfig config = UserPreferences.getStatusConfig();
+        if (isChecked) {
+            config.downTimeBegin = data.getStringExtra(NoDisturbActivity.EXTRA_START_TIME);
+            config.downTimeEnd = data.getStringExtra(NoDisturbActivity.EXTRA_END_TIME);
+            noDisturbTime = String.format("%s到%s", config.downTimeBegin, config.downTimeEnd);
+        } else {
+            config.downTimeBegin = null;
+            config.downTimeEnd = null;
+        }
+        disturbItem.setDetail(noDisturbTime);
+        adapter.notifyDataSetChanged();
+        UserPreferences.setDownTimeToggle(isChecked);
+        config.downTimeToggle = isChecked;
+        UserPreferences.setStatusConfig(config);
+        NIMClient.updateStatusBarNotificationConfig(config);
+    }
 }
