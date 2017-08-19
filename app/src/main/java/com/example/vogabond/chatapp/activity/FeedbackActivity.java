@@ -35,6 +35,8 @@ public class FeedbackActivity extends UI {
                     Toast.makeText(getApplicationContext(), "发送成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+                    ///1111
+
                 }
             }
         });
