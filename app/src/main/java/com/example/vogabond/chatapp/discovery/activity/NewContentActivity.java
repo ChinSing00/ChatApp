@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.example.vogabond.chatapp.R;
@@ -18,7 +20,7 @@ import com.example.vogabond.chatapp.main.model.Extras;
 public class NewContentActivity extends UI {
     private String url;
     private WebView webview;
-    private void start(String url, Context context){
+    public static void start(String url, Context context){
         Intent itt = new Intent(context,NewContentActivity.class);
         itt.putExtra(Extras.NEWS,url);
         itt.setClass(context,NewContentActivity.class);
@@ -33,7 +35,17 @@ public class NewContentActivity extends UI {
 
     private void initView() {
         url = getIntent().getStringExtra(Extras.NEWS);
+        Log.e("======url======",url);
         webview = new WebView(this);
+        WebSettings webSettings = webview.getSettings();
+        // 设置与Js交互的权限
+        webSettings.setJavaScriptEnabled(true);
         webview.loadUrl(url);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
     }
 }

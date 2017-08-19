@@ -3,11 +3,9 @@ package com.example.vogabond.chatapp.discovery.model;
 
 import javax.annotation.Generated;
 
-
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
 public class Datum {
-
 
     private String mAuthorName;
     private String mCategory;
@@ -18,6 +16,8 @@ public class Datum {
     private String mTitle;
     private String mUniquekey;
     private String mUrl;
+    public Boolean isChecked = false;
+
 
     public String getAuthorName() {
         return mAuthorName;
@@ -91,4 +91,18 @@ public class Datum {
         mUrl = url;
     }
 
+    @Override
+    public String toString() {
+        return "Datum{" +
+                "mAuthorName='" + mAuthorName + '\'' +
+                ", mCategory='" + mCategory + '\'' +
+                ", mDate='" + mDate + '\'' +
+                ", mThumbnailPicS='" + mThumbnailPicS + '\'' +
+                ", mThumbnailPicS02='" + mThumbnailPicS02 + '\'' +
+                ", mThumbnailPicS03='" + mThumbnailPicS03 + '\'' +
+                ", mTitle='" + mTitle + '\'' +
+                ", mUniquekey='" + mUniquekey + '\'' +
+                ", mUrl='" + mUrl + '\'' +
+                '}';
+    }
 }

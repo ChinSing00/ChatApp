@@ -35,4 +35,12 @@ public class NewBean {
         mResult = result;
     }
 
+    @Override
+    public String toString() {
+        return "NewBean{" +
+                "mErrorCode=" + mErrorCode +
+                ", mReason='" + mReason + '\'' +
+                ", mResult=" + mResult +
+                '}';
+    }
 }

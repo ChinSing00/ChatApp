@@ -56,6 +56,7 @@ public class NewListAdapter extends BaseAdapter {
             holder = (NewListItemHolder) view.getTag();
         }
         //图片缓存使用了Picasso图片缓存框架
+        //Log.e("what's the url",getItem(i).getThumbnailPicS());
         Picasso.with(context).load(getItem(i).getThumbnailPicS()).into(holder.new_imageView);
         //holder.new_author.setText(getItem(i).getAuthorName());
         holder.new_title.setText(getItem(i).getTitle());

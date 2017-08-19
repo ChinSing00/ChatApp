@@ -2,6 +2,7 @@
 package com.example.vogabond.chatapp.discovery.model;
 
 import java.util.List;
+
 import javax.annotation.Generated;
 
 @Generated("net.hexar.json2pojo")
@@ -27,4 +28,11 @@ public class Result {
         mStat = stat;
     }
 
+    @Override
+    public String toString() {
+        return "Result{" +
+                "mData=" + mData +
+                ", mStat='" + mStat + '\'' +
+                '}';
+    }
 }

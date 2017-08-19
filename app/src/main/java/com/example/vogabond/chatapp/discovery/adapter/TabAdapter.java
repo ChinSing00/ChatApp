@@ -1,8 +1,10 @@
-package com.example.vogabond.chatapp.main.fragment;
+package com.example.vogabond.chatapp.discovery.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.vogabond.chatapp.main.fragment.NewFragment;
 
 import java.util.List;
 
