@@ -46,9 +46,9 @@ public class NewListAdapter extends BaseAdapter {
         NewListItemHolder holder = null;
         if(view == null ){
             holder = new NewListItemHolder();
-            view = LayoutInflater.from(context).inflate(R.layout.new_list_item,null);
-            holder.new_imageView = view.findViewById(R.id.new_img);
-            holder.new_author = view.findViewById(R.id.new_author);
+            view = LayoutInflater.from(context).inflate(R.layout.find_item_layout,null);
+            holder.new_imageView = view.findViewById(R.id.new_image);
+            //holder.new_author = view.findViewById(R.id.new_author);
             holder.new_time = view.findViewById(R.id.new_date);
             holder.new_title = view.findViewById(R.id.new_title);
             view.setTag(holder);
@@ -57,7 +57,7 @@ public class NewListAdapter extends BaseAdapter {
         }
         //图片缓存使用了Picasso图片缓存框架
         Picasso.with(context).load(getItem(i).getThumbnailPicS()).into(holder.new_imageView);
-        holder.new_author.setText(getItem(i).getAuthorName());
+        //holder.new_author.setText(getItem(i).getAuthorName());
         holder.new_title.setText(getItem(i).getTitle());
         holder.new_time.setText(getItem(i).getDate());
         return view;
