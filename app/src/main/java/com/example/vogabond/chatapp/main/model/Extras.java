@@ -13,6 +13,7 @@ public interface Extras {
     String EXTRA_FROM = "from";
 
     String EXTRA_FROM_NOTIFICATION = "from_notification";
+    String NEWS = "news";
 
     // 参数
     String EXTRA_ACCOUNT = "account";
