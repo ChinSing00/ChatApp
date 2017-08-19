@@ -21,12 +21,14 @@ public class FeedbackActivity extends UI {
         Intent itt = new Intent(c,FeedbackActivity.class);
         c.startActivity(itt);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
 
         ToolBarOptions options = new ToolBarOptions();
+        options.titleId = R.string.feedback;
         setToolBar(R.id.toolbar, options);
 
         button = (Button) findViewById(R.id.feedback_but);

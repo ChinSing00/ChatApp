@@ -21,7 +21,10 @@ public class AboutActivity extends UI {
         setContentView(R.layout.activity_about);
 
         ToolBarOptions options = new ToolBarOptions();
+        options.titleId = R.string.about;
         setToolBar(R.id.toolbar, options);
+
+
 
 
     }

@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vogabond.chatapp.Login.LoginActivity;
@@ -91,63 +92,6 @@ public class MainActivity extends UI {
         initFragment();
         //头部点击事件
         initheadView();
-    }
-
-    private void initheadView() {
-        View headView = navigationView.inflateHeaderView(R.layout.menu_layout);
-        ImageView mHeadPic = (ImageView) headView.findViewById(R.id.imageView);
-        mHeadPic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("Log:","头部被点击了！");
-            }
-        });
-    }
-
-    private void initView() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        //定义toolbar左上角的弹出左侧菜单按钮
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        //同步状态
-        toggle.syncState();
-        //侧滑透明
-        drawerLayout.setScrimColor(Color.TRANSPARENT);
-
-        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-                View mContent = drawerLayout.getChildAt(0);
-                View mMenu = drawerView;
-                float scale = 1 - slideOffset;
-                //改变DrawLayout侧栏透明度，若不需要效果可以不设置
-                int offset = (int) (drawerView.getWidth() * slideOffset);
-                mContent.setTranslationX(offset);
-////        isDrawer = true;
-////        //获取屏幕的宽高
-////        WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-////        Display display = manager.getDefaultDisplay();
-////        //设置右面的布局位置  根据左面菜单的right作为右面布局的left   左面的right+屏幕的宽度（或者right的宽度这里是相等的）为右面布局的right
-////        right.layout(navigationView.getRight(), 0, navigationView.getRight() + display.getWidth(), display.getHeight());
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-            }
-        });
 
     }
 
@@ -168,6 +112,7 @@ public class MainActivity extends UI {
                 .permissions(BASIC_PERMISSIONS)
                 .request();
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         MPermission.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
@@ -184,6 +129,59 @@ public class MainActivity extends UI {
     public void onBasicPermissionFailed() {
         Toast.makeText(this, "未全部授权，部分功能可能无法正常运行！", Toast.LENGTH_SHORT).show();
         MPermission.printMPermissionResult(false, this, BASIC_PERMISSIONS);
+    }
+
+    private void initheadView() {
+        View headView = navigationView.inflateHeaderView(R.layout.menu_layout);
+        ImageView mHeadPic = (ImageView) headView.findViewById(R.id.imageView);
+        mHeadPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("Log:", "头部被点击了！");
+            }
+        });
+    }
+
+    private void initView() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("消息");
+        //定义toolbar左上角的弹出左侧菜单按钮
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        //同步状态
+        toggle.syncState();
+        //侧滑透明
+        drawerLayout.setScrimColor(Color.TRANSPARENT);
+
+        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                View mContent = drawerLayout.getChildAt(0);
+                View mMenu = drawerView;
+                float scale = 1 - slideOffset;
+                //改变DrawLayout侧栏透明度，若不需要效果可以不设置
+                int offset = (int) (drawerView.getWidth() * slideOffset);
+                mContent.setTranslationX(offset);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
+
     }
 
     private void initNavigationView() {
@@ -213,7 +211,7 @@ public class MainActivity extends UI {
                     case R.id.nav_night:
                         break;
                     case R.id.nav_setting:
-                        Intent itt = new Intent(MainActivity.this,SettingsActivity.class);
+                        Intent itt = new Intent(MainActivity.this, SettingsActivity.class);
                         startActivity(itt);
                         break;
                     case R.id.nav_feedback:
@@ -236,15 +234,18 @@ public class MainActivity extends UI {
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 switch (i) {
                     case R.id.news_buttom:
+                        toolbar.setTitle("消息");
                         setIndexSelected(0);
                         break;
                     case R.id.friends_buttom:
+                        toolbar.setTitle("联系人");
                         setIndexSelected(1);
                         break;
                     case R.id.find_buttom:
+                        toolbar.setTitle("发现");
                         setIndexSelected(2);
                         break;
-                 }
+                }
             }
         });
     }
@@ -253,7 +254,7 @@ public class MainActivity extends UI {
         ContactsFragment contactsFragment = new ContactsFragment();
         NewFragment nf = new NewFragment();
         RecentContactsFragment recentContactsFragment = new RecentContactsFragment();
-        mFragments = new Fragment[]{recentContactsFragment, contactsFragment,nf};
+        mFragments = new Fragment[]{recentContactsFragment, contactsFragment, nf};
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.add(R.id.frame_content, recentContactsFragment).commit();
         setIndexSelected(0);
