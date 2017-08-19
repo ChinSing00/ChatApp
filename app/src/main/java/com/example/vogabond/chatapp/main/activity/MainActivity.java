@@ -193,7 +193,6 @@ public class MainActivity extends UI {
                 switch (item.getItemId()) {
                     case R.id.nav_me:
                         UserProfileActivity.start(MainActivity.this, MyCache.getAccount());
-
                         break;
                     case R.id.nav_collection:
                         break;
@@ -291,9 +290,6 @@ public class MainActivity extends UI {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.about:
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                break;
             case R.id.create_normal_team:
                 ContactSelectActivity.Option option = TeamHelper.getCreateContactSelectOption(null, 50);
                 NimUIKit.startContactSelect(MainActivity.this, option, 1);
