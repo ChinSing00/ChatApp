@@ -1,6 +1,7 @@
 package com.example.vogabond.chatapp.activity;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,10 @@ import com.netease.nim.uikit.model.ToolBarOptions;
 public class FeedbackActivity extends UI {
     private Button button;
     private EditText editText;
+    public static void start(Context c){
+        Intent itt = new Intent(c,FeedbackActivity.class);
+        c.startActivity(itt);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

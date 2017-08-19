@@ -213,12 +213,11 @@ public class MainActivity extends UI {
                     case R.id.nav_night:
                         break;
                     case R.id.nav_setting:
-                        AddFriendActivity.start(MainActivity.this);
+                        Intent itt = new Intent(MainActivity.this,SettingsActivity.class);
+                        startActivity(itt);
                         break;
                     case R.id.nav_feedback:
-                        intent = new Intent();
-                        intent.setClass(getApplicationContext(), FeedbackActivity.class);
-                        startActivity(intent);
+                        FeedbackActivity.start(MainActivity.this);
                         break;
                     case R.id.nav_about:
                         AboutActivity.start(MainActivity.this);
