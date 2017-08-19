@@ -1,17 +1,21 @@
 package com.example.vogabond.chatapp.activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.vogabond.chatapp.R;
+import com.example.vogabond.chatapp.main.activity.MainActivity;
 import com.netease.nim.uikit.model.ToolBarOptions;
 
 
 public class FeedbackActivity extends UI {
     private Button button;
+    private EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,10 +25,17 @@ public class FeedbackActivity extends UI {
         setToolBar(R.id.toolbar, options);
 
         button = (Button) findViewById(R.id.feedback_but);
+        editText= (EditText) findViewById(R.id.feedback_editText);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"发送成功",Toast.LENGTH_SHORT).show();
+                if (editText.getText().toString().length()==0){
+                    Toast.makeText(getApplicationContext(), "请输入反馈信息", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getApplicationContext(), "发送成功", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
