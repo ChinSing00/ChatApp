@@ -2,17 +2,13 @@
 package com.example.vogabond.chatapp.discovery.model;
 
 import javax.annotation.Generated;
-import com.google.gson.annotations.SerializedName;
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
 public class NewBean {
 
-    @SerializedName("error_code")
     private Long mErrorCode;
-    @SerializedName("reason")
     private String mReason;
-    @SerializedName("result")
     private Result mResult;
 
     public Long getErrorCode() {

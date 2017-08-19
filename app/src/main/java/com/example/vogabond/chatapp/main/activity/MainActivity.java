@@ -35,6 +35,7 @@ import com.example.vogabond.chatapp.chatroom.fragment.ChatRoomFragment;
 import com.example.vogabond.chatapp.chatroom.helper.ChatRoomHelper;
 import com.example.vogabond.chatapp.contact.activity.AddFriendActivity;
 import com.example.vogabond.chatapp.contact.activity.UserProfileActivity;
+import com.example.vogabond.chatapp.main.fragment.NewFragment;
 import com.example.vogabond.chatapp.team.AdvancedTeamSearchActivity;
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.common.activity.UI;
@@ -250,9 +251,9 @@ public class MainActivity extends UI {
 
     private void initFragment() {
         ContactsFragment contactsFragment = new ContactsFragment();
-        ChatRoomFragment cff = new ChatRoomFragment();
+        NewFragment nf = new NewFragment();
         RecentContactsFragment recentContactsFragment = new RecentContactsFragment();
-        mFragments = new Fragment[]{recentContactsFragment, contactsFragment,cff};
+        mFragments = new Fragment[]{recentContactsFragment, contactsFragment,nf};
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.add(R.id.frame_content, recentContactsFragment).commit();
         setIndexSelected(0);

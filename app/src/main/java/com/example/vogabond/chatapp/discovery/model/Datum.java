@@ -2,29 +2,21 @@
 package com.example.vogabond.chatapp.discovery.model;
 
 import javax.annotation.Generated;
-import com.google.gson.annotations.SerializedName;
+
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
 public class Datum {
 
-    @SerializedName("author_name")
+
     private String mAuthorName;
-    @SerializedName("category")
     private String mCategory;
-    @SerializedName("date")
     private String mDate;
-    @SerializedName("thumbnail_pic_s")
     private String mThumbnailPicS;
-    @SerializedName("thumbnail_pic_s02")
     private String mThumbnailPicS02;
-    @SerializedName("thumbnail_pic_s03")
     private String mThumbnailPicS03;
-    @SerializedName("title")
     private String mTitle;
-    @SerializedName("uniquekey")
     private String mUniquekey;
-    @SerializedName("url")
     private String mUrl;
 
     public String getAuthorName() {

@@ -78,4 +78,8 @@
     <color name="color_black_ff999999">#ff999999</color>
     <color name="color_gray_bfc2c5">#bfc2c5</color>
 
+
+    <!-- 新闻-->
+    <color name="gray">#6dcf64</color>
+    <color name="titleBlue">#34cdde</color>
 </resources>
