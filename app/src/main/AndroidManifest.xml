@@ -54,13 +54,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- 音视频 -->
-        <activity
-            android:name="avchat.activity.AVChatActivity"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
-            android:theme="@style/FullScreenTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".avchat.activity.AVChatSettingsActivity" />
         <activity
             android:name=".Login.LoginActivity"
@@ -76,6 +69,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".avchat.activity.AVChatActivity"/>
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".main.activity.MainActivity"/>
         <activity android:name=".main.activity.TeamListActivity" />
