@@ -49,7 +49,7 @@ public class NewListAdapter extends BaseAdapter {
             holder = new NewListItemHolder();
             view = LayoutInflater.from(context).inflate(R.layout.find_item_layout,null);
             holder.new_imageView = view.findViewById(R.id.new_image);
-            //holder.new_author = view.findViewById(R.id.new_author);
+            holder.new_author = view.findViewById(R.id.new_auther);
             holder.new_time = view.findViewById(R.id.new_date);
             holder.new_title = view.findViewById(R.id.new_title);
             view.setTag(holder);
@@ -60,8 +60,8 @@ public class NewListAdapter extends BaseAdapter {
         //Log.e("what's the url",getItem(i).getThumbnailPicS());
 //        Picasso.with(context).load(getItem(i).getThumbnailPicS()).into(holder.new_imageView);
         Picasso.with(context).load(dataLsit.get(i).getThumbnail_Pic_S()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.new_imageView);
-        //holder.new_author.setText(getItem(i).getAuthorName());
-        holder.new_title.setText(getItem(i).getTitle());
+        holder.new_author.setText(getItem(i).getAuthor_Name());
+        holder.new_title.setText("  "+getItem(i).getTitle());
         holder.new_time.setText(getItem(i).getDate());
         return view;
     }

@@ -7,7 +7,7 @@ import javax.annotation.Generated;
 @SuppressWarnings("unused")
 public class Datum {
 
-    private String AuthorName;
+    private String Author_Name;
     private String Category;
     private String Date;
     private String Thumbnail_Pic_S;
@@ -20,7 +20,7 @@ public class Datum {
     @Override
     public String toString() {
         return "Datum{" +
-                "AuthorName='" + AuthorName + '\'' +
+                "AuthorName='" + Author_Name + '\'' +
                 ", Category='" + Category + '\'' +
                 ", Date='" + Date + '\'' +
                 ", Thumbnail_Pic_S='" + Thumbnail_Pic_S + '\'' +
@@ -32,12 +32,12 @@ public class Datum {
                 '}';
     }
 
-    public String getAuthorName() {
-        return AuthorName;
+    public String getAuthor_Name() {
+        return Author_Name;
     }
 
-    public void setAuthorName(String authorName) {
-        AuthorName = authorName;
+    public void setAuthor_Name(String author_Name) {
+        Author_Name = author_Name;
     }
 
     public String getCategory() {

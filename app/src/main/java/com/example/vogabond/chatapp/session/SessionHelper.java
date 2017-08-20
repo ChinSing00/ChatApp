@@ -68,16 +68,11 @@ public class SessionHelper {
     private static List<PopupMenuItem> menuItemList;
 
     public static void init() {
-        // 注册自定义消息附件解析器
-        //NIMClient.getService(MsgService.class).registerCustomAttachmentParser(new CustomAttachParser());
-        // 注册各种扩展消息类型的显示ViewHolder
+
+         //注册各种扩展消息类型的显示ViewHolder
         registerViewHolders();
         // 设置会话中点击事件响应处理
         setSessionListener();
-        // 注册消息转发过滤器
-       // registerMsgForwardFilter();
-        // 注册消息撤回过滤器
-        //registerMsgRevokeFilter();
         // 注册消息撤回监听器
         registerMsgRevokeObserver();
         NimUIKit.setCommonP2PSessionCustomization(getP2pCustomization());
@@ -131,23 +126,13 @@ public class SessionHelper {
                 }
             };
 
-            // 背景
-//            p2pCustomization.backgroundColor = Color.BLUE;
-//            p2pCustomization.backgroundUri = "file:///android_asset/xx/bk.jpg";
-//            p2pCustomization.backgroundUri = "file:///sdcard/Pictures/bk.png";
-//            p2pCustomization.backgroundUri = "android.resource://com.netease.nim.demo/drawable/bk"
 
-            // 定制加号点开后可以包含的操作， 默认已经有图片，视频等消息了
             ArrayList<BaseAction> actions = new ArrayList<>();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
                 actions.add(new AVChatAction(AVChatType.AUDIO));
                 actions.add(new AVChatAction(AVChatType.VIDEO));
             }
-//            actions.add(new RTSAction());
-//            actions.add(new SnapChatAction());
-//            actions.add(new GuessAction());
-//            actions.add(new FileAction());
-//            actions.add(new TipAction());
+
             p2pCustomization.actions = actions;
             p2pCustomization.withSticker = true;
 
@@ -210,17 +195,10 @@ public class SessionHelper {
                 }
             };
 
-            // 背景
-//            p2pCustomization.backgroundColor = Color.BLUE;
-//            p2pCustomization.backgroundUri = "file:///android_asset/xx/bk.jpg";
-//            p2pCustomization.backgroundUri = "file:///sdcard/Pictures/bk.png";
-//            p2pCustomization.backgroundUri = "android.resource://com.netease.nim.demo/drawable/bk"
 
             // 定制加号点开后可以包含的操作， 默认已经有图片，视频等消息了
             ArrayList<BaseAction> actions = new ArrayList<>();
-//            actions.add(new SnapChatAction());
-//            actions.add(new GuessAction());
-//            actions.add(new FileAction());
+//
             myP2pCustomization.actions = actions;
             myP2pCustomization.withSticker = true;
             // 定制ActionBar右边的按钮，可以加多个
@@ -365,13 +343,7 @@ public class SessionHelper {
     private static void registerViewHolders() {
         NimUIKit.registerMsgItemViewHolder(FileAttachment.class, MsgViewHolderFile.class);
         NimUIKit.registerMsgItemViewHolder(AVChatAttachment.class, MsgViewHolderAVChat.class);
-        //NimUIKit.registerMsgItemViewHolder(GuessAttachment.class, MsgViewHolderGuess.class);
-       // NimUIKit.registerMsgItemViewHolder(CustomAttachment.class, MsgViewHolderDefCustom.class);
-//        NimUIKit.registerMsgItemViewHolder(StickerAttachment.class, MsgViewHolderSticker.class);
-//        NimUIKit.registerMsgItemViewHolder(SnapChatAttachment.class, MsgViewHolderSnapChat.class);
-//        NimUIKit.registerMsgItemViewHolder(RTSAttachment.class, MsgViewHolderRTS.class);
-        //NimUIKit.registerTipMsgViewHolder(MsgViewHolderTip.class);
-    }
+         }
 
     private static void setSessionListener() {
         SessionEventListener listener = new SessionEventListener() {
@@ -399,51 +371,7 @@ public class SessionHelper {
     }
 
 
-    /**
-     * 消息转发过滤器
-     */
-//    private static void registerMsgForwardFilter() {
-//        NimUIKit.setMsgForwardFilter(new MsgForwardFilter() {
-//            @Override
-//            public boolean shouldIgnore(IMMessage message) {
-//                if (message.getDirect() == MsgDirectionEnum.In
-//                        && (message.getAttachStatus() == AttachStatusEnum.transferring
-//                        || message.getAttachStatus() == AttachStatusEnum.fail)) {
-//                    // 接收到的消息，附件没有下载成功，不允许转发
-//                    return true;
-//                } else if (message.getMsgType() == MsgTypeEnum.custom && message.getAttachment() != null
-//                        && (message.getAttachment() instanceof SnapChatAttachment
-//                        || message.getAttachment() instanceof RTSAttachment)) {
-//                    // 白板消息和阅后即焚消息 不允许转发
-//                    return true;
-//                } else if (message.getMsgType() == MsgTypeEnum.robot && message.getAttachment() != null && ((RobotAttachment) message.getAttachment()).isRobotSend()) {
-//                    return true; // 如果是机器人发送的消息 不支持转发
-//                }
-//                return false;
-//            }
-//        });
-//    }
 
-    /**
-     * 消息撤回过滤器
-     */
-//    private static void registerMsgRevokeFilter() {
-//        NimUIKit.setMsgRevokeFilter(new MsgRevokeFilter() {
-//            @Override
-//            public boolean shouldIgnore(IMMessage message) {
-//                if (message.getAttachment() != null
-//                        && (message.getAttachment() instanceof AVChatAttachment
-//                        || message.getAttachment() instanceof RTSAttachment)) {
-//                    // 视频通话消息和白板消息 不允许撤回
-//                    return true;
-//                } else if (myCache.getAccount().equals(message.getSessionId())) {
-//                    // 发给我的电脑 不允许撤回
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
-//    }
 
     private static void registerMsgRevokeObserver() {
         NIMClient.getService(MsgServiceObserve.class).observeRevokeMessage(new Observer<IMMessage>() {
