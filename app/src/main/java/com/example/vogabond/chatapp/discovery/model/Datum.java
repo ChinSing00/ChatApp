@@ -7,101 +7,100 @@ import javax.annotation.Generated;
 @SuppressWarnings("unused")
 public class Datum {
 
-    private String mAuthorName;
-    private String mCategory;
-    private String mDate;
-    private String mThumbnailPicS;
-    private String mThumbnailPicS02;
-    private String mThumbnailPicS03;
-    private String mTitle;
-    private String mUniquekey;
-    private String mUrl;
-
-
-    public String getAuthorName() {
-        return mAuthorName;
-    }
-
-    public void setAuthorName(String authorName) {
-        mAuthorName = authorName;
-    }
-
-    public String getCategory() {
-        return mCategory;
-    }
-
-    public void setCategory(String category) {
-        mCategory = category;
-    }
-
-    public String getDate() {
-        return mDate;
-    }
-
-    public void setDate(String date) {
-        mDate = date;
-    }
-
-    public String getThumbnailPicS() {
-        return mThumbnailPicS;
-    }
-
-    public void setThumbnailPicS(String thumbnailPicS) {
-        mThumbnailPicS = thumbnailPicS;
-    }
-
-    public String getThumbnailPicS02() {
-        return mThumbnailPicS02;
-    }
-
-    public void setThumbnailPicS02(String thumbnailPicS02) {
-        mThumbnailPicS02 = thumbnailPicS02;
-    }
-
-    public String getThumbnailPicS03() {
-        return mThumbnailPicS03;
-    }
-
-    public void setThumbnailPicS03(String thumbnailPicS03) {
-        mThumbnailPicS03 = thumbnailPicS03;
-    }
-
-    public String getTitle() {
-        return mTitle;
-    }
-
-    public void setTitle(String title) {
-        mTitle = title;
-    }
-
-    public String getUniquekey() {
-        return mUniquekey;
-    }
-
-    public void setUniquekey(String uniquekey) {
-        mUniquekey = uniquekey;
-    }
-
-    public String getUrl() {
-        return mUrl;
-    }
-
-    public void setUrl(String url) {
-        mUrl = url;
-    }
+    private String AuthorName;
+    private String Category;
+    private String Date;
+    private String Thumbnail_Pic_S;
+    private String Thumbnail_PicS_02;
+    private String Thumbnail_PicS_03;
+    private String Title;
+    private String Uniquekey;
+    private String Url;
 
     @Override
     public String toString() {
         return "Datum{" +
-                "mAuthorName='" + mAuthorName + '\'' +
-                ", mCategory='" + mCategory + '\'' +
-                ", mDate='" + mDate + '\'' +
-                ", mThumbnailPicS='" + mThumbnailPicS + '\'' +
-                ", mThumbnailPicS02='" + mThumbnailPicS02 + '\'' +
-                ", mThumbnailPicS03='" + mThumbnailPicS03 + '\'' +
-                ", mTitle='" + mTitle + '\'' +
-                ", mUniquekey='" + mUniquekey + '\'' +
-                ", mUrl='" + mUrl + '\'' +
+                "AuthorName='" + AuthorName + '\'' +
+                ", Category='" + Category + '\'' +
+                ", Date='" + Date + '\'' +
+                ", Thumbnail_Pic_S='" + Thumbnail_Pic_S + '\'' +
+                ", Thumbnail_PicS_02='" + Thumbnail_PicS_02 + '\'' +
+                ", Thumbnail_PicS_03='" + Thumbnail_PicS_03 + '\'' +
+                ", Title='" + Title + '\'' +
+                ", Uniquekey='" + Uniquekey + '\'' +
+                ", Url='" + Url + '\'' +
                 '}';
+    }
+
+    public String getAuthorName() {
+        return AuthorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        AuthorName = authorName;
+    }
+
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String category) {
+        Category = category;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getThumbnail_Pic_S() {
+        return Thumbnail_Pic_S;
+    }
+
+    public void setThumbnail_Pic_S(String thumbnail_Pic_S) {
+        Thumbnail_Pic_S = thumbnail_Pic_S;
+    }
+
+    public String getThumbnail_PicS_02() {
+        return Thumbnail_PicS_02;
+    }
+
+    public void setThumbnail_PicS_02(String thumbnail_PicS_02) {
+        Thumbnail_PicS_02 = thumbnail_PicS_02;
+    }
+
+    public String getThumbnail_PicS_03() {
+        return Thumbnail_PicS_03;
+    }
+
+    public void setThumbnail_PicS_03(String thumbnail_PicS_03) {
+        Thumbnail_PicS_03 = thumbnail_PicS_03;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
+    }
+
+    public String getUniquekey() {
+        return Uniquekey;
+    }
+
+    public void setUniquekey(String uniquekey) {
+        Uniquekey = uniquekey;
+    }
+
+    public String getUrl() {
+        return Url;
+    }
+
+    public void setUrl(String url) {
+        Url = url;
     }
 }
