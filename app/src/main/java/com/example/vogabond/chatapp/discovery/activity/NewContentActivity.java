@@ -35,7 +35,7 @@ public class NewContentActivity extends UI {
 
     private void initView() {
         url = getIntent().getStringExtra(Extras.NEWS);
-        Log.e("======url======",url);
+        Log.e("======url======>",url);
         webview = new WebView(this);
         WebSettings webSettings = webview.getSettings();
         // 设置与Js交互的权限

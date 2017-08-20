@@ -1,6 +1,7 @@
 package com.example.vogabond.chatapp.discovery.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,8 @@ public class NewListAdapter extends BaseAdapter {
         }
         //图片缓存使用了Picasso图片缓存框架
         //Log.e("what's the url",getItem(i).getThumbnailPicS());
-        Picasso.with(context).load(getItem(i).getThumbnailPicS()).into(holder.new_imageView);
+//        Picasso.with(context).load(getItem(i).getThumbnailPicS()).into(holder.new_imageView);
+        Picasso.with(context).load(dataLsit.get(i).getThumbnailPicS02()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.new_imageView);
         //holder.new_author.setText(getItem(i).getAuthorName());
         holder.new_title.setText(getItem(i).getTitle());
         holder.new_time.setText(getItem(i).getDate());

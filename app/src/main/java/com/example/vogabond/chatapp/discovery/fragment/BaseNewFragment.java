@@ -55,6 +55,7 @@ public  class BaseNewFragment extends Fragment implements AdapterView.OnItemClic
         view = inflater.inflate(R.layout.new_list,null);
         url ="http://v.juhe.cn/toutiao/index?type="+NEW_TYPE+"&key=50271a1b243438cf50346f735755e378";
 
+
         getData();
         return view ;
     }

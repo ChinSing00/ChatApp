@@ -45,7 +45,7 @@ public class NewFragment extends Fragment {
         fragments.add(new BaseNewFragment(NewType.CAIJING));
         fragments.add(new BaseNewFragment(NewType.SHISHANG));
         tabLayout.setupWithViewPager(viewpager);
-        adapter = new TabAdapter(getChildFragmentManager(), fragments);
+        adapter = new TabAdapter(getFragmentManager(), fragments);
         viewpager.setAdapter(adapter);
         return view;
     }
