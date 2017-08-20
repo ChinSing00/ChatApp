@@ -88,7 +88,12 @@
         <activity android:name=".team.AdvancedTeamSearchActivity" />
         <activity android:name=".team.AdvancedTeamJoinActivity" />
         <activity android:name=".main.activity.NoDisturbActivity" />
-        <activity android:name=".discovery.activity.NewContentActivity"/>
+        <activity android:name=".discovery.activity.NewContentActivity">
+            <intent-filter>
+                <action android:name=".discovery.activity.NewContentActivity"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
         <meta-data
             android:name="com.netease.nim.appKey"
             android:value="45c6af3c98409b18a84451215d0bdd6e" />

@@ -1,5 +1,6 @@
 package com.example.vogabond.chatapp.discovery.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,10 +13,10 @@ import android.widget.ListView;
 
 import com.alibaba.fastjson.JSON;
 import com.example.vogabond.chatapp.R;
-import com.example.vogabond.chatapp.discovery.activity.NewContentActivity;
 import com.example.vogabond.chatapp.discovery.adapter.NewListAdapter;
 import com.example.vogabond.chatapp.discovery.model.Datum;
 import com.example.vogabond.chatapp.discovery.model.NewBean;
+import com.example.vogabond.chatapp.main.model.Extras;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -102,7 +103,9 @@ public  class BaseNewFragment extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        NewContentActivity.start(dataList.get(i).getUrl(),getActivity());
+        Intent intent = new Intent(".discovery.activity.NewContentActivity");
+        intent.putExtra(Extras.NEWS,dataList.get(i).getUrl());
+        startActivity(intent);
         Log.e("======|url|======",dataList.get(i).getUrl());
     }
 }

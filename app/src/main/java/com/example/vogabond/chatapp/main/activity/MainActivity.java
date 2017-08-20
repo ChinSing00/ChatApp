@@ -23,7 +23,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vogabond.chatapp.Login.LoginActivity;
@@ -32,7 +31,6 @@ import com.example.vogabond.chatapp.MyCache;
 import com.example.vogabond.chatapp.R;
 import com.example.vogabond.chatapp.activity.AboutActivity;
 import com.example.vogabond.chatapp.activity.FeedbackActivity;
-import com.example.vogabond.chatapp.chatroom.fragment.ChatRoomFragment;
 import com.example.vogabond.chatapp.chatroom.helper.ChatRoomHelper;
 import com.example.vogabond.chatapp.contact.activity.AddFriendActivity;
 import com.example.vogabond.chatapp.contact.activity.UserProfileActivity;

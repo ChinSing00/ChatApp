@@ -16,7 +16,6 @@ public class Datum {
     private String mTitle;
     private String mUniquekey;
     private String mUrl;
-    public Boolean isChecked = false;
 
 
     public String getAuthorName() {

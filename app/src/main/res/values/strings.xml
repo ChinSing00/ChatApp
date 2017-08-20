@@ -196,6 +196,7 @@
     <string name="doodle_clear">清屏</string>
 
     <!-- setting -->
+    <string name="news">新闻</string>
     <string name="settings">设置</string>
     <string name="no_disturb">免打扰</string>
     <string name="multiport_push">PC/Web在线推送</string>
