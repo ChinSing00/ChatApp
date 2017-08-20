@@ -242,6 +242,7 @@ public class MainActivity extends UI {
                     case R.id.find_buttom:
                         toolbar.setTitle("发现");
                         setIndexSelected(2);
+
                         break;
                 }
             }

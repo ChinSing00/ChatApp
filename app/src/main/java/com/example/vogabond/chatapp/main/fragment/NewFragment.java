@@ -26,12 +26,13 @@ public class NewFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewpager;
     private TabAdapter adapter;
-    public static final String[] tabTitle = new String[]{"头条","社会","国内","国际","娱乐","体育","军事","科技","财经","时尚"};
+    public static final String[] tabTitle = new String[]{"头条", "社会", "国内", "国际", "娱乐", "体育", "军事", "科技", "财经", "时尚"};
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.list_view_news,null);
-        tabLayout=view.findViewById(R.id.tab_FindFragment_title);
+        view = inflater.inflate(R.layout.list_view_news, null);
+        tabLayout = view.findViewById(R.id.tab_FindFragment_title);
         viewpager = view.findViewById(R.id.new_viewpager);
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new BaseNewFragment(NewType.TOP));
@@ -49,7 +50,6 @@ public class NewFragment extends Fragment {
         viewpager.setAdapter(adapter);
         return view;
     }
-
 
 
 }

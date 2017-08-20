@@ -68,7 +68,6 @@ public  class BaseNewFragment extends Fragment implements AdapterView.OnItemClic
     }
 
     private void findView() {
-
         Log.e("ssssssssssssssss",dataList.size()+"");
         listView = view.findViewById(R.id.new_list);
         adapter = new NewListAdapter(dataList,getActivity());
